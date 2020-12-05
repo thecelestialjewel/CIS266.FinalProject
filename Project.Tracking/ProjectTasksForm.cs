@@ -10,9 +10,9 @@ using System.Windows.Forms;
 
 namespace Project.Tracking
 {
-    public partial class ProjectTasksFormcs : Form
+    public partial class ProjectTasksForm : Form
     {
-        public ProjectTasksFormcs()
+        public ProjectTasksForm(ProjectTrackingDataSet projectTrackingDataSet)
         {
             InitializeComponent();
         }

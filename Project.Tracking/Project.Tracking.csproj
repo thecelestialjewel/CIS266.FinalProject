@@ -73,11 +73,11 @@
     <Compile Include="ProjectEmployeesForm.Designer.cs">
       <DependentUpon>ProjectEmployeesForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="ProjectTasksFormcs.cs">
+    <Compile Include="ProjectTasksForm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="ProjectTasksFormcs.Designer.cs">
-      <DependentUpon>ProjectTasksFormcs.cs</DependentUpon>
+    <Compile Include="ProjectTasksForm.Designer.cs">
+      <DependentUpon>ProjectTasksForm.cs</DependentUpon>
     </Compile>
     <Compile Include="ProjectTrackingDataSet.cs">
       <DependentUpon>ProjectTrackingDataSet.xsd</DependentUpon>

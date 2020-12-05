@@ -16,8 +16,8 @@ namespace Project.Tracking
 
         public ProjectTrackingMainForm()
         {
-
             InitializeComponent();
+            IsMdiContainer = true;
             projectTrackingDataSet = new ProjectTrackingDataSet();
             FillData();
         }
@@ -43,6 +43,37 @@ namespace Project.Tracking
 
             }
             //if an error, display a message to user.
+            catch (Exception ex)
+            {
+
+                MessageBox.Show(ex.Message);
+            }
+        }
+
+        private void SaveData()
+        {
+            //instantiating adapters
+            ProjectTrackingTableAdapters.EmployeeTableAdapter employeeTableAdapter = new ProjectTrackingTableAdapters.EmployeeTableAdapter();
+            ProjectTrackingTableAdapters.EmployeeTasksTableAdapter employeeTasksTableAdapter = new ProjectTrackingTableAdapters.EmployeeTasksTableAdapter();
+            ProjectTrackingTableAdapters.ProjectTableAdapter projectTableAdapter = new ProjectTrackingTableAdapters.ProjectTableAdapter();
+            ProjectTrackingTableAdapters.StatusTableAdapter statusTableAdapter = new ProjectTrackingTableAdapters.StatusTableAdapter();
+            ProjectTrackingTableAdapters.TaskTableAdapter taskTableAdapter = new ProjectTrackingTableAdapters.TaskTableAdapter();
+            
+            //assigning table adapter to table adapter manager properities
+            ProjectTrackingTableAdapters.TableAdapterManager tableAdapterManager = new ProjectTrackingTableAdapters.TableAdapterManager();
+            tableAdapterManager.EmployeeTableAdapter = employeeTableAdapter;
+            tableAdapterManager.EmployeeTasksTableAdapter = employeeTasksTableAdapter;
+            tableAdapterManager.ProjectTableAdapter = projectTableAdapter;
+            tableAdapterManager.StatusTableAdapter = statusTableAdapter;
+            tableAdapterManager.TaskTableAdapter = taskTableAdapter;
+
+            //updating database based on dataset
+            try
+            {
+                int rowsUpdated = tableAdapterManager.UpdateAll(projectTrackingDataSet);
+                SetReadyLabel($"Database updated. Totals rows updated [{rowsUpdated}]");
+
+            }
             catch (Exception ex)
             {
 
@@ -93,6 +124,27 @@ namespace Project.Tracking
         private void employeeBindingNavigatorSaveItem_Click(object sender, EventArgs e)
         {
             this.Validate();
+        }
+
+        //Save click event. Save data to database.
+        private void saveToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            SaveData();
+        }
+
+        private void projectTasksToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            ShowForm(new ProjectTasksForm(projectTrackingDataSet));
+        }
+
+        private void projectEmployeesToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            ShowForm(new ProjectEmployeesForm(projectTrackingDataSet));
+        }
+
+        private void employeeProjectTasksToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            ShowForm(new EmployeeProjectsAndTasksForm(projectTrackingDataSet));
         }
     }
 }

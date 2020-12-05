@@ -12,7 +12,7 @@ namespace Project.Tracking
 {
     public partial class EmployeeProjectsAndTasksForm : Form
     {
-        public EmployeeProjectsAndTasksForm()
+        public EmployeeProjectsAndTasksForm(ProjectTrackingDataSet projectTrackingDataSet)
         {
             InitializeComponent();
         }
