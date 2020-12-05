@@ -16,5 +16,11 @@ namespace Project.Tracking
         {
             InitializeComponent();
         }
+
+        //Getting main form to access public methods and properities.
+        private ProjectTrackingMainForm MainForm
+        {
+            get { return (ProjectTrackingMainForm)MdiParent; }
+        }
     }
 }

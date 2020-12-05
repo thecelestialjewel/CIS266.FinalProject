@@ -16,6 +16,7 @@ namespace Project.Tracking
 
         public ProjectTrackingMainForm()
         {
+            //Turning on all components on page.
             InitializeComponent();
             IsMdiContainer = true;
             projectTrackingDataSet = new ProjectTrackingDataSet();
@@ -74,6 +75,7 @@ namespace Project.Tracking
                 SetReadyLabel($"Database updated. Totals rows updated [{rowsUpdated}]");
 
             }
+            //if an error, display a message to user.
             catch (Exception ex)
             {
 
@@ -88,43 +90,37 @@ namespace Project.Tracking
         }
 
 
-        //
+        //arranges window in cascade style
         private void cascadeToolStripMenuItem_Click(object sender, EventArgs e)
         {
             LayoutMdi(MdiLayout.Cascade);
         }
-
+        
+        //arrange window in horizontal tile
         private void horizontalToolStripMenuItem_Click(object sender, EventArgs e)
         {
             LayoutMdi(MdiLayout.TileHorizontal);
         }
 
+        //arrange window in verticle tile
         private void verticalToolStripMenuItem_Click(object sender, EventArgs e)
         {
             LayoutMdi(MdiLayout.TileVertical);
         }
 
-        private void arrangeToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            LayoutMdi(MdiLayout.ArrangeIcons);
-        }
-
+        //Taking form, setting main form as parent, update status label, and showing form.
         private void ShowForm(Form form)
         {
             form.MdiParent = this;
             SetReadyLabel($"{form.Text} is open.");
             form.Show();
         }
-
+        //Updates status label.
         public void SetReadyLabel(string message)
         {
             toolStripStatusLabel.Text = message;
         }
 
-        private void employeeBindingNavigatorSaveItem_Click(object sender, EventArgs e)
-        {
-            this.Validate();
-        }
 
         //Save click event. Save data to database.
         private void saveToolStripMenuItem_Click(object sender, EventArgs e)
@@ -132,16 +128,19 @@ namespace Project.Tracking
             SaveData();
         }
 
+        //Click event for project tasks menu option. 
         private void projectTasksToolStripMenuItem_Click(object sender, EventArgs e)
         {
             ShowForm(new ProjectTasksForm(projectTrackingDataSet));
         }
 
+        //Click event for employees menu option.
         private void projectEmployeesToolStripMenuItem_Click(object sender, EventArgs e)
         {
             ShowForm(new ProjectEmployeesForm(projectTrackingDataSet));
         }
 
+        //Click event for employee projects and tasks menu option.
         private void employeeProjectTasksToolStripMenuItem_Click(object sender, EventArgs e)
         {
             ShowForm(new EmployeeProjectsAndTasksForm(projectTrackingDataSet));
