@@ -118,7 +118,7 @@ namespace Project.Tracking
 
         public void SetReadyLabel(string message)
         {
-            statusStrip.Text = message;
+            toolStripStatusLabel.Text = message;
         }
 
         private void employeeBindingNavigatorSaveItem_Click(object sender, EventArgs e)
