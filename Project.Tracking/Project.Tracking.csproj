@@ -117,10 +117,10 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="ProjectTracking.mdf">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
     <Content Include="ProjectTracking_log.ldf">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
       <DependentUpon>ProjectTracking.mdf</DependentUpon>
     </Content>
   </ItemGroup>
