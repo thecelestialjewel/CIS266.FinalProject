@@ -17,9 +17,32 @@ namespace Project.Tracking
             InitializeComponent();
         }
 
+        //menu strip for exiting
         private void exitToolStripMenuItem_Click(object sender, EventArgs e)
         {
            Close();
+        }
+
+
+        //
+        private void cascadeToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            LayoutMdi(MdiLayout.Cascade);
+        }
+
+        private void horizontalToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            LayoutMdi(MdiLayout.TileHorizontal);
+        }
+
+        private void verticalToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            LayoutMdi(MdiLayout.TileVertical);
+        }
+
+        private void arrangeToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            LayoutMdi(MdiLayout.ArrangeIcons);
         }
     }
 }

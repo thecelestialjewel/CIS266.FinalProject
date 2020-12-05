@@ -72,6 +72,9 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <EmbeddedResource Include="EmployeeProjectsAndTasksForm.resx">
+      <DependentUpon>EmployeeProjectsAndTasksForm.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="ProjectTrackingMainForm.resx">
       <DependentUpon>ProjectTrackingMainForm.cs</DependentUpon>
     </EmbeddedResource>
