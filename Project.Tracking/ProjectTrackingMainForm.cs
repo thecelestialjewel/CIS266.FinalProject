@@ -10,11 +10,16 @@ using System.Windows.Forms;
 
 namespace Project.Tracking
 {
-    public partial class Form1 : Form
+    public partial class ProjectTrackingMainForm : Form
     {
-        public Form1()
+        public ProjectTrackingMainForm()
         {
             InitializeComponent();
+        }
+
+        private void exitToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+           Close();
         }
     }
 }
