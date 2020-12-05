@@ -44,5 +44,16 @@ namespace Project.Tracking
         {
             LayoutMdi(MdiLayout.ArrangeIcons);
         }
+
+        private void ShowForm(Form form)
+        {
+            form.MdiParent = this;
+            form.Show();
+        }
+
+        public void SetReadyLabel(string message)
+        {
+            statusStrip.Text = message;
+        }
     }
 }
