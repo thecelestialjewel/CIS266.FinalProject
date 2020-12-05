@@ -19,7 +19,7 @@ namespace Project.Tracking
 
             InitializeComponent();
             projectTrackingDataSet = new ProjectTrackingDataSet();
-
+            FillData();
         }
 
         //Using data adapters to fill dataset.
@@ -81,6 +81,7 @@ namespace Project.Tracking
         private void ShowForm(Form form)
         {
             form.MdiParent = this;
+            SetReadyLabel($"{form.Text} is open.");
             form.Show();
         }
 
