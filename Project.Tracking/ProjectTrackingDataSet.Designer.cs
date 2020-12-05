@@ -22,7 +22,7 @@ namespace Project.Tracking {
     [global::System.Xml.Serialization.XmlSchemaProviderAttribute("GetTypedDataSetSchema")]
     [global::System.Xml.Serialization.XmlRootAttribute("ProjectTracking")]
     [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.DataSet")]
-    public partial class ProjectTrackingDataSet : global::System.Data.DataSet {
+    public partial class ProjectTracking : global::System.Data.DataSet {
         
         private EmployeeDataTable tableEmployee;
         
@@ -50,24 +50,28 @@ namespace Project.Tracking {
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-        public ProjectTrackingDataSet() {
+        public ProjectTracking() {
             this.BeginInit();
             this.InitClass();
             global::System.ComponentModel.CollectionChangeEventHandler schemaChangedHandler = new global::System.ComponentModel.CollectionChangeEventHandler(this.SchemaChanged);
             base.Tables.CollectionChanged += schemaChangedHandler;
             base.Relations.CollectionChanged += schemaChangedHandler;
             this.EndInit();
+            this.InitExpressions();
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-        protected ProjectTrackingDataSet(global::System.Runtime.Serialization.SerializationInfo info, global::System.Runtime.Serialization.StreamingContext context) : 
+        protected ProjectTracking(global::System.Runtime.Serialization.SerializationInfo info, global::System.Runtime.Serialization.StreamingContext context) : 
                 base(info, context, false) {
             if ((this.IsBinarySerialized(info, context) == true)) {
                 this.InitVars(false);
                 global::System.ComponentModel.CollectionChangeEventHandler schemaChangedHandler1 = new global::System.ComponentModel.CollectionChangeEventHandler(this.SchemaChanged);
                 this.Tables.CollectionChanged += schemaChangedHandler1;
                 this.Relations.CollectionChanged += schemaChangedHandler1;
+                if ((this.DetermineSchemaSerializationMode(info, context) == global::System.Data.SchemaSerializationMode.ExcludeSchema)) {
+                    this.InitExpressions();
+                }
                 return;
             }
             string strSchema = ((string)(info.GetValue("XmlSchema", typeof(string))));
@@ -100,6 +104,7 @@ namespace Project.Tracking {
             }
             else {
                 this.ReadXmlSchema(new global::System.Xml.XmlTextReader(new global::System.IO.StringReader(strSchema)));
+                this.InitExpressions();
             }
             this.GetSerializationData(info, context);
             global::System.ComponentModel.CollectionChangeEventHandler schemaChangedHandler = new global::System.ComponentModel.CollectionChangeEventHandler(this.SchemaChanged);
@@ -199,8 +204,9 @@ namespace Project.Tracking {
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
         public override global::System.Data.DataSet Clone() {
-            ProjectTrackingDataSet cln = ((ProjectTrackingDataSet)(base.Clone()));
+            ProjectTracking cln = ((ProjectTracking)(base.Clone()));
             cln.InitVars();
+            cln.InitExpressions();
             cln.SchemaSerializationMode = this.SchemaSerializationMode;
             return cln;
         }
@@ -318,7 +324,7 @@ namespace Project.Tracking {
             this.Namespace = "http://tempuri.org/ProjectTracking.xsd";
             this.EnforceConstraints = true;
             this.SchemaSerializationMode = global::System.Data.SchemaSerializationMode.IncludeSchema;
-            this.tableEmployee = new EmployeeDataTable();
+            this.tableEmployee = new EmployeeDataTable(false);
             base.Tables.Add(this.tableEmployee);
             this.tableEmployeeTasks = new EmployeeTasksDataTable();
             base.Tables.Add(this.tableEmployeeTasks);
@@ -395,7 +401,7 @@ namespace Project.Tracking {
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
         public static global::System.Xml.Schema.XmlSchemaComplexType GetTypedDataSetSchema(global::System.Xml.Schema.XmlSchemaSet xs) {
-            ProjectTrackingDataSet ds = new ProjectTrackingDataSet();
+            ProjectTracking ds = new ProjectTracking();
             global::System.Xml.Schema.XmlSchemaComplexType type = new global::System.Xml.Schema.XmlSchemaComplexType();
             global::System.Xml.Schema.XmlSchemaSequence sequence = new global::System.Xml.Schema.XmlSchemaSequence();
             global::System.Xml.Schema.XmlSchemaAny any = new global::System.Xml.Schema.XmlSchemaAny();
@@ -439,6 +445,12 @@ namespace Project.Tracking {
             return type;
         }
         
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+        private void InitExpressions() {
+            this.Employee.FullNameColumn.Expression = "FirstName + \' \' + LastName";
+        }
+        
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
         public delegate void EmployeeRowChangeEventHandler(object sender, EmployeeRowChangeEvent e);
         
@@ -471,12 +483,23 @@ namespace Project.Tracking {
             
             private global::System.Data.DataColumn columnIsManager;
             
+            private global::System.Data.DataColumn columnFullName;
+            
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            public EmployeeDataTable() {
+            public EmployeeDataTable() : 
+                    this(false) {
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public EmployeeDataTable(bool initExpressions) {
                 this.TableName = "Employee";
                 this.BeginInit();
                 this.InitClass();
+                if ((initExpressions == true)) {
+                    this.InitExpressions();
+                }
                 this.EndInit();
             }
             
@@ -546,6 +569,14 @@ namespace Project.Tracking {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public global::System.Data.DataColumn FullNameColumn {
+                get {
+                    return this.columnFullName;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
             [global::System.ComponentModel.Browsable(false)]
             public int Count {
                 get {
@@ -581,6 +612,22 @@ namespace Project.Tracking {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public EmployeeRow AddEmployeeRow(string FirstName, string LastName, string Title, bool IsManager, string FullName) {
+                EmployeeRow rowEmployeeRow = ((EmployeeRow)(this.NewRow()));
+                object[] columnValuesArray = new object[] {
+                        null,
+                        FirstName,
+                        LastName,
+                        Title,
+                        IsManager,
+                        FullName};
+                rowEmployeeRow.ItemArray = columnValuesArray;
+                this.Rows.Add(rowEmployeeRow);
+                return rowEmployeeRow;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
             public EmployeeRow AddEmployeeRow(string FirstName, string LastName, string Title, bool IsManager) {
                 EmployeeRow rowEmployeeRow = ((EmployeeRow)(this.NewRow()));
                 object[] columnValuesArray = new object[] {
@@ -588,7 +635,8 @@ namespace Project.Tracking {
                         FirstName,
                         LastName,
                         Title,
-                        IsManager};
+                        IsManager,
+                        null};
                 rowEmployeeRow.ItemArray = columnValuesArray;
                 this.Rows.Add(rowEmployeeRow);
                 return rowEmployeeRow;
@@ -623,6 +671,7 @@ namespace Project.Tracking {
                 this.columnLastName = base.Columns["LastName"];
                 this.columnTitle = base.Columns["Title"];
                 this.columnIsManager = base.Columns["IsManager"];
+                this.columnFullName = base.Columns["FullName"];
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -638,6 +687,8 @@ namespace Project.Tracking {
                 base.Columns.Add(this.columnTitle);
                 this.columnIsManager = new global::System.Data.DataColumn("IsManager", typeof(bool), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnIsManager);
+                this.columnFullName = new global::System.Data.DataColumn("FullName", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnFullName);
                 this.Constraints.Add(new global::System.Data.UniqueConstraint("Constraint1", new global::System.Data.DataColumn[] {
                                 this.columnId}, true));
                 this.columnId.AutoIncrement = true;
@@ -653,6 +704,7 @@ namespace Project.Tracking {
                 this.columnTitle.AllowDBNull = false;
                 this.columnTitle.MaxLength = 255;
                 this.columnIsManager.AllowDBNull = false;
+                this.columnFullName.ReadOnly = true;
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -671,6 +723,12 @@ namespace Project.Tracking {
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
             protected override global::System.Type GetRowType() {
                 return typeof(EmployeeRow);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            private void InitExpressions() {
+                this.FullNameColumn.Expression = "FirstName + \' \' + LastName";
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -720,7 +778,7 @@ namespace Project.Tracking {
             public static global::System.Xml.Schema.XmlSchemaComplexType GetTypedTableSchema(global::System.Xml.Schema.XmlSchemaSet xs) {
                 global::System.Xml.Schema.XmlSchemaComplexType type = new global::System.Xml.Schema.XmlSchemaComplexType();
                 global::System.Xml.Schema.XmlSchemaSequence sequence = new global::System.Xml.Schema.XmlSchemaSequence();
-                ProjectTrackingDataSet ds = new ProjectTrackingDataSet();
+                ProjectTracking ds = new ProjectTracking();
                 global::System.Xml.Schema.XmlSchemaAny any1 = new global::System.Xml.Schema.XmlSchemaAny();
                 any1.Namespace = "http://www.w3.org/2001/XMLSchema";
                 any1.MinOccurs = new decimal(0);
@@ -1018,7 +1076,7 @@ namespace Project.Tracking {
             public static global::System.Xml.Schema.XmlSchemaComplexType GetTypedTableSchema(global::System.Xml.Schema.XmlSchemaSet xs) {
                 global::System.Xml.Schema.XmlSchemaComplexType type = new global::System.Xml.Schema.XmlSchemaComplexType();
                 global::System.Xml.Schema.XmlSchemaSequence sequence = new global::System.Xml.Schema.XmlSchemaSequence();
-                ProjectTrackingDataSet ds = new ProjectTrackingDataSet();
+                ProjectTracking ds = new ProjectTracking();
                 global::System.Xml.Schema.XmlSchemaAny any1 = new global::System.Xml.Schema.XmlSchemaAny();
                 any1.Namespace = "http://www.w3.org/2001/XMLSchema";
                 any1.MinOccurs = new decimal(0);
@@ -1377,7 +1435,7 @@ namespace Project.Tracking {
             public static global::System.Xml.Schema.XmlSchemaComplexType GetTypedTableSchema(global::System.Xml.Schema.XmlSchemaSet xs) {
                 global::System.Xml.Schema.XmlSchemaComplexType type = new global::System.Xml.Schema.XmlSchemaComplexType();
                 global::System.Xml.Schema.XmlSchemaSequence sequence = new global::System.Xml.Schema.XmlSchemaSequence();
-                ProjectTrackingDataSet ds = new ProjectTrackingDataSet();
+                ProjectTracking ds = new ProjectTracking();
                 global::System.Xml.Schema.XmlSchemaAny any1 = new global::System.Xml.Schema.XmlSchemaAny();
                 any1.Namespace = "http://www.w3.org/2001/XMLSchema";
                 any1.MinOccurs = new decimal(0);
@@ -1655,7 +1713,7 @@ namespace Project.Tracking {
             public static global::System.Xml.Schema.XmlSchemaComplexType GetTypedTableSchema(global::System.Xml.Schema.XmlSchemaSet xs) {
                 global::System.Xml.Schema.XmlSchemaComplexType type = new global::System.Xml.Schema.XmlSchemaComplexType();
                 global::System.Xml.Schema.XmlSchemaSequence sequence = new global::System.Xml.Schema.XmlSchemaSequence();
-                ProjectTrackingDataSet ds = new ProjectTrackingDataSet();
+                ProjectTracking ds = new ProjectTracking();
                 global::System.Xml.Schema.XmlSchemaAny any1 = new global::System.Xml.Schema.XmlSchemaAny();
                 any1.Namespace = "http://www.w3.org/2001/XMLSchema";
                 any1.MinOccurs = new decimal(0);
@@ -2028,7 +2086,7 @@ namespace Project.Tracking {
             public static global::System.Xml.Schema.XmlSchemaComplexType GetTypedTableSchema(global::System.Xml.Schema.XmlSchemaSet xs) {
                 global::System.Xml.Schema.XmlSchemaComplexType type = new global::System.Xml.Schema.XmlSchemaComplexType();
                 global::System.Xml.Schema.XmlSchemaSequence sequence = new global::System.Xml.Schema.XmlSchemaSequence();
-                ProjectTrackingDataSet ds = new ProjectTrackingDataSet();
+                ProjectTracking ds = new ProjectTracking();
                 global::System.Xml.Schema.XmlSchemaAny any1 = new global::System.Xml.Schema.XmlSchemaAny();
                 any1.Namespace = "http://www.w3.org/2001/XMLSchema";
                 any1.MinOccurs = new decimal(0);
@@ -2154,6 +2212,34 @@ namespace Project.Tracking {
                 set {
                     this[this.tableEmployee.IsManagerColumn] = value;
                 }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public string FullName {
+                get {
+                    try {
+                        return ((string)(this[this.tableEmployee.FullNameColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("The value for column \'FullName\' in table \'Employee\' is DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tableEmployee.FullNameColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public bool IsFullNameNull() {
+                return this.IsNull(this.tableEmployee.FullNameColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public void SetFullNameNull() {
+                this[this.tableEmployee.FullNameColumn] = global::System.Convert.DBNull;
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -2980,7 +3066,7 @@ SELECT Id, FirstName, LastName, Title, IsManager FROM Employee WHERE (Id = @Id)"
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Fill, true)]
-        public virtual int Fill(ProjectTrackingDataSet.EmployeeDataTable dataTable) {
+        public virtual int Fill(ProjectTracking.EmployeeDataTable dataTable) {
             this.Adapter.SelectCommand = this.CommandCollection[0];
             if ((this.ClearBeforeFill == true)) {
                 dataTable.Clear();
@@ -2993,9 +3079,9 @@ SELECT Id, FirstName, LastName, Title, IsManager FROM Employee WHERE (Id = @Id)"
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Select, true)]
-        public virtual ProjectTrackingDataSet.EmployeeDataTable GetData() {
+        public virtual ProjectTracking.EmployeeDataTable GetData() {
             this.Adapter.SelectCommand = this.CommandCollection[0];
-            ProjectTrackingDataSet.EmployeeDataTable dataTable = new ProjectTrackingDataSet.EmployeeDataTable();
+            ProjectTracking.EmployeeDataTable dataTable = new ProjectTracking.EmployeeDataTable(true);
             this.Adapter.Fill(dataTable);
             return dataTable;
         }
@@ -3003,14 +3089,14 @@ SELECT Id, FirstName, LastName, Title, IsManager FROM Employee WHERE (Id = @Id)"
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
-        public virtual int Update(ProjectTrackingDataSet.EmployeeDataTable dataTable) {
+        public virtual int Update(ProjectTracking.EmployeeDataTable dataTable) {
             return this.Adapter.Update(dataTable);
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
-        public virtual int Update(ProjectTrackingDataSet dataSet) {
+        public virtual int Update(ProjectTracking dataSet) {
             return this.Adapter.Update(dataSet, "Employee");
         }
         
@@ -3357,7 +3443,7 @@ SELECT Id, FirstName, LastName, Title, IsManager FROM Employee WHERE (Id = @Id)"
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Fill, true)]
-        public virtual int Fill(ProjectTrackingDataSet.EmployeeTasksDataTable dataTable) {
+        public virtual int Fill(ProjectTracking.EmployeeTasksDataTable dataTable) {
             this.Adapter.SelectCommand = this.CommandCollection[0];
             if ((this.ClearBeforeFill == true)) {
                 dataTable.Clear();
@@ -3370,9 +3456,9 @@ SELECT Id, FirstName, LastName, Title, IsManager FROM Employee WHERE (Id = @Id)"
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Select, true)]
-        public virtual ProjectTrackingDataSet.EmployeeTasksDataTable GetData() {
+        public virtual ProjectTracking.EmployeeTasksDataTable GetData() {
             this.Adapter.SelectCommand = this.CommandCollection[0];
-            ProjectTrackingDataSet.EmployeeTasksDataTable dataTable = new ProjectTrackingDataSet.EmployeeTasksDataTable();
+            ProjectTracking.EmployeeTasksDataTable dataTable = new ProjectTracking.EmployeeTasksDataTable();
             this.Adapter.Fill(dataTable);
             return dataTable;
         }
@@ -3380,14 +3466,14 @@ SELECT Id, FirstName, LastName, Title, IsManager FROM Employee WHERE (Id = @Id)"
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
-        public virtual int Update(ProjectTrackingDataSet.EmployeeTasksDataTable dataTable) {
+        public virtual int Update(ProjectTracking.EmployeeTasksDataTable dataTable) {
             return this.Adapter.Update(dataTable);
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
-        public virtual int Update(ProjectTrackingDataSet dataSet) {
+        public virtual int Update(ProjectTracking dataSet) {
             return this.Adapter.Update(dataSet, "EmployeeTasks");
         }
         
@@ -3683,7 +3769,7 @@ SELECT Id, Name, Description, StartDate, EndDate, StatusId, ManagerId FROM Proje
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Fill, true)]
-        public virtual int Fill(ProjectTrackingDataSet.ProjectDataTable dataTable) {
+        public virtual int Fill(ProjectTracking.ProjectDataTable dataTable) {
             this.Adapter.SelectCommand = this.CommandCollection[0];
             if ((this.ClearBeforeFill == true)) {
                 dataTable.Clear();
@@ -3696,9 +3782,9 @@ SELECT Id, Name, Description, StartDate, EndDate, StatusId, ManagerId FROM Proje
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Select, true)]
-        public virtual ProjectTrackingDataSet.ProjectDataTable GetData() {
+        public virtual ProjectTracking.ProjectDataTable GetData() {
             this.Adapter.SelectCommand = this.CommandCollection[0];
-            ProjectTrackingDataSet.ProjectDataTable dataTable = new ProjectTrackingDataSet.ProjectDataTable();
+            ProjectTracking.ProjectDataTable dataTable = new ProjectTracking.ProjectDataTable();
             this.Adapter.Fill(dataTable);
             return dataTable;
         }
@@ -3706,14 +3792,14 @@ SELECT Id, Name, Description, StartDate, EndDate, StatusId, ManagerId FROM Proje
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
-        public virtual int Update(ProjectTrackingDataSet.ProjectDataTable dataTable) {
+        public virtual int Update(ProjectTracking.ProjectDataTable dataTable) {
             return this.Adapter.Update(dataTable);
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
-        public virtual int Update(ProjectTrackingDataSet dataSet) {
+        public virtual int Update(ProjectTracking dataSet) {
             return this.Adapter.Update(dataSet, "Project");
         }
         
@@ -4052,7 +4138,7 @@ SELECT Id, Name, Description, StartDate, EndDate, StatusId, ManagerId FROM Proje
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Fill, true)]
-        public virtual int Fill(ProjectTrackingDataSet.StatusDataTable dataTable) {
+        public virtual int Fill(ProjectTracking.StatusDataTable dataTable) {
             this.Adapter.SelectCommand = this.CommandCollection[0];
             if ((this.ClearBeforeFill == true)) {
                 dataTable.Clear();
@@ -4065,9 +4151,9 @@ SELECT Id, Name, Description, StartDate, EndDate, StatusId, ManagerId FROM Proje
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Select, true)]
-        public virtual ProjectTrackingDataSet.StatusDataTable GetData() {
+        public virtual ProjectTracking.StatusDataTable GetData() {
             this.Adapter.SelectCommand = this.CommandCollection[0];
-            ProjectTrackingDataSet.StatusDataTable dataTable = new ProjectTrackingDataSet.StatusDataTable();
+            ProjectTracking.StatusDataTable dataTable = new ProjectTracking.StatusDataTable();
             this.Adapter.Fill(dataTable);
             return dataTable;
         }
@@ -4075,14 +4161,14 @@ SELECT Id, Name, Description, StartDate, EndDate, StatusId, ManagerId FROM Proje
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
-        public virtual int Update(ProjectTrackingDataSet.StatusDataTable dataTable) {
+        public virtual int Update(ProjectTracking.StatusDataTable dataTable) {
             return this.Adapter.Update(dataTable);
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
-        public virtual int Update(ProjectTrackingDataSet dataSet) {
+        public virtual int Update(ProjectTracking dataSet) {
             return this.Adapter.Update(dataSet, "Status");
         }
         
@@ -4401,7 +4487,7 @@ SELECT Id, Name, Description, HoursWorked, StartDate, EndDate, ProjectId, Status
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Fill, true)]
-        public virtual int Fill(ProjectTrackingDataSet.TaskDataTable dataTable) {
+        public virtual int Fill(ProjectTracking.TaskDataTable dataTable) {
             this.Adapter.SelectCommand = this.CommandCollection[0];
             if ((this.ClearBeforeFill == true)) {
                 dataTable.Clear();
@@ -4414,9 +4500,9 @@ SELECT Id, Name, Description, HoursWorked, StartDate, EndDate, ProjectId, Status
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Select, true)]
-        public virtual ProjectTrackingDataSet.TaskDataTable GetData() {
+        public virtual ProjectTracking.TaskDataTable GetData() {
             this.Adapter.SelectCommand = this.CommandCollection[0];
-            ProjectTrackingDataSet.TaskDataTable dataTable = new ProjectTrackingDataSet.TaskDataTable();
+            ProjectTracking.TaskDataTable dataTable = new ProjectTracking.TaskDataTable();
             this.Adapter.Fill(dataTable);
             return dataTable;
         }
@@ -4424,14 +4510,14 @@ SELECT Id, Name, Description, HoursWorked, StartDate, EndDate, ProjectId, Status
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
-        public virtual int Update(ProjectTrackingDataSet.TaskDataTable dataTable) {
+        public virtual int Update(ProjectTracking.TaskDataTable dataTable) {
             return this.Adapter.Update(dataTable);
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
-        public virtual int Update(ProjectTrackingDataSet dataSet) {
+        public virtual int Update(ProjectTracking dataSet) {
             return this.Adapter.Update(dataSet, "Task");
         }
         
@@ -4812,7 +4898,7 @@ SELECT Id, Name, Description, HoursWorked, StartDate, EndDate, ProjectId, Status
         ///</summary>
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-        private int UpdateUpdatedRows(ProjectTrackingDataSet dataSet, global::System.Collections.Generic.List<global::System.Data.DataRow> allChangedRows, global::System.Collections.Generic.List<global::System.Data.DataRow> allAddedRows) {
+        private int UpdateUpdatedRows(ProjectTracking dataSet, global::System.Collections.Generic.List<global::System.Data.DataRow> allChangedRows, global::System.Collections.Generic.List<global::System.Data.DataRow> allAddedRows) {
             int result = 0;
             if ((this._employeeTableAdapter != null)) {
                 global::System.Data.DataRow[] updatedRows = dataSet.Employee.Select(null, null, global::System.Data.DataViewRowState.ModifiedCurrent);
@@ -4867,7 +4953,7 @@ SELECT Id, Name, Description, HoursWorked, StartDate, EndDate, ProjectId, Status
         ///</summary>
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-        private int UpdateInsertedRows(ProjectTrackingDataSet dataSet, global::System.Collections.Generic.List<global::System.Data.DataRow> allAddedRows) {
+        private int UpdateInsertedRows(ProjectTracking dataSet, global::System.Collections.Generic.List<global::System.Data.DataRow> allAddedRows) {
             int result = 0;
             if ((this._employeeTableAdapter != null)) {
                 global::System.Data.DataRow[] addedRows = dataSet.Employee.Select(null, null, global::System.Data.DataViewRowState.Added);
@@ -4917,7 +5003,7 @@ SELECT Id, Name, Description, HoursWorked, StartDate, EndDate, ProjectId, Status
         ///</summary>
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-        private int UpdateDeletedRows(ProjectTrackingDataSet dataSet, global::System.Collections.Generic.List<global::System.Data.DataRow> allChangedRows) {
+        private int UpdateDeletedRows(ProjectTracking dataSet, global::System.Collections.Generic.List<global::System.Data.DataRow> allChangedRows) {
             int result = 0;
             if ((this._employeeTasksTableAdapter != null)) {
                 global::System.Data.DataRow[] deletedRows = dataSet.EmployeeTasks.Select(null, null, global::System.Data.DataViewRowState.Deleted);
@@ -4991,7 +5077,7 @@ SELECT Id, Name, Description, HoursWorked, StartDate, EndDate, ProjectId, Status
         ///</summary>
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-        public virtual int UpdateAll(ProjectTrackingDataSet dataSet) {
+        public virtual int UpdateAll(ProjectTracking dataSet) {
             if ((dataSet == null)) {
                 throw new global::System.ArgumentNullException("dataSet");
             }

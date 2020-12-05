@@ -353,6 +353,7 @@ SELECT Id, Name, Description, HoursWorked, StartDate, EndDate, ProjectId, Status
                 </xs:simpleType>
               </xs:element>
               <xs:element name="IsManager" msprop:Generator_ColumnVarNameInTable="columnIsManager" msprop:Generator_ColumnPropNameInRow="IsManager" msprop:Generator_ColumnPropNameInTable="IsManagerColumn" msprop:Generator_UserColumnName="IsManager" type="xs:boolean" />
+              <xs:element name="FullName" msdata:ReadOnly="true" msdata:Expression="FirstName + ' ' + LastName" msprop:Generator_ColumnVarNameInTable="columnFullName" msprop:Generator_ColumnPropNameInRow="FullName" msprop:Generator_ColumnPropNameInTable="FullNameColumn" msprop:Generator_UserColumnName="FullName" type="xs:string" minOccurs="0" />
             </xs:sequence>
           </xs:complexType>
         </xs:element>
