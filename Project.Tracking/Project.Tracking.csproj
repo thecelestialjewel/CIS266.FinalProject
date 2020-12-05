@@ -79,13 +79,13 @@
     <Compile Include="ProjectTasksFormcs.Designer.cs">
       <DependentUpon>ProjectTasksFormcs.cs</DependentUpon>
     </Compile>
-    <Compile Include="ProjectTracking.cs">
-      <DependentUpon>ProjectTracking.xsd</DependentUpon>
+    <Compile Include="ProjectTrackingDataSet.cs">
+      <DependentUpon>ProjectTrackingDataSet.xsd</DependentUpon>
     </Compile>
-    <Compile Include="ProjectTracking.Designer.cs">
+    <Compile Include="ProjectTrackingDataSet.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
-      <DependentUpon>ProjectTracking.xsd</DependentUpon>
+      <DependentUpon>ProjectTrackingDataSet.xsd</DependentUpon>
     </Compile>
     <Compile Include="ProjectTrackingMainForm.cs">
       <SubType>Form</SubType>
@@ -110,16 +110,16 @@
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
-    <None Include="ProjectTracking.xsc">
-      <DependentUpon>ProjectTracking.xsd</DependentUpon>
+    <None Include="ProjectTrackingDataSet.xsc">
+      <DependentUpon>ProjectTrackingDataSet.xsd</DependentUpon>
     </None>
-    <None Include="ProjectTracking.xsd">
+    <None Include="ProjectTrackingDataSet.xsd">
       <SubType>Designer</SubType>
       <Generator>MSDataSetGenerator</Generator>
-      <LastGenOutput>ProjectTracking.Designer.cs</LastGenOutput>
+      <LastGenOutput>ProjectTrackingDataSet.Designer.cs</LastGenOutput>
     </None>
-    <None Include="ProjectTracking.xss">
-      <DependentUpon>ProjectTracking.xsd</DependentUpon>
+    <None Include="ProjectTrackingDataSet.xss">
+      <DependentUpon>ProjectTrackingDataSet.xsd</DependentUpon>
     </None>
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>

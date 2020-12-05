@@ -2,7 +2,7 @@
 {
 
 
-    partial class ProjectTracking
+    partial class ProjectTrackingDataSet
     {
     }
 }
