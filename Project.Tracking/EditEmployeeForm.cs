@@ -15,7 +15,10 @@ namespace Project.Tracking
         public EditEmployeeForm(ProjectTrackingDataSet projectTrackingDataSet)
         {
             InitializeComponent();
-
+            this.projectTrackingDataSet = null;
+            this.projectTrackingDataSet = projectTrackingDataSet;
+            this.employeeBindingSource.DataSource = null;
+            this.employeeBindingSource.DataSource = this.projectTrackingDataSet.Employee;
         }
     }
 }
