@@ -122,6 +122,15 @@
     <EmbeddedResource Include="EditEmployeeForm.resx">
       <DependentUpon>EditEmployeeForm.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="EditEmployeeTaskForm.resx">
+      <DependentUpon>EditEmployeeTaskForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="EditProjectForm.resx">
+      <DependentUpon>EditProjectForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="EditTaskForm.resx">
+      <DependentUpon>EditTaskForm.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="EmployeeProjectsAndTasksForm.resx">
       <DependentUpon>EmployeeProjectsAndTasksForm.cs</DependentUpon>
     </EmbeddedResource>

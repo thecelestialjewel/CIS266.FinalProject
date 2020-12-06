@@ -102,7 +102,7 @@
             this.employeeBindingNavigator.MovePreviousItem = this.bindingNavigatorMovePreviousItem;
             this.employeeBindingNavigator.Name = "employeeBindingNavigator";
             this.employeeBindingNavigator.PositionItem = this.bindingNavigatorPositionItem;
-            this.employeeBindingNavigator.Size = new System.Drawing.Size(800, 25);
+            this.employeeBindingNavigator.Size = new System.Drawing.Size(294, 25);
             this.employeeBindingNavigator.TabIndex = 0;
             this.employeeBindingNavigator.Text = "bindingNavigator1";
             // 
@@ -215,7 +215,7 @@
             this.idTextBox.Location = new System.Drawing.Point(105, 40);
             this.idTextBox.Name = "idTextBox";
             this.idTextBox.ReadOnly = true;
-            this.idTextBox.Size = new System.Drawing.Size(104, 20);
+            this.idTextBox.Size = new System.Drawing.Size(49, 20);
             this.idTextBox.TabIndex = 2;
             // 
             // firstNameLabel
@@ -283,16 +283,15 @@
             this.isManagerCheckBox.DataBindings.Add(new System.Windows.Forms.Binding("CheckState", this.employeeBindingSource, "IsManager", true));
             this.isManagerCheckBox.Location = new System.Drawing.Point(105, 144);
             this.isManagerCheckBox.Name = "isManagerCheckBox";
-            this.isManagerCheckBox.Size = new System.Drawing.Size(104, 24);
+            this.isManagerCheckBox.Size = new System.Drawing.Size(18, 24);
             this.isManagerCheckBox.TabIndex = 10;
-            this.isManagerCheckBox.Text = "checkBox1";
             this.isManagerCheckBox.UseVisualStyleBackColor = true;
             // 
             // EditEmployeeForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(800, 450);
+            this.ClientSize = new System.Drawing.Size(294, 314);
             this.Controls.Add(idLabel);
             this.Controls.Add(this.idTextBox);
             this.Controls.Add(firstNameLabel);

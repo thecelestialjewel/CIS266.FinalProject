@@ -15,6 +15,10 @@ namespace Project.Tracking
         public EditTaskForm(ProjectTrackingDataSet projectTrackingDataSet)
         {
             InitializeComponent();
+            this.projectTrackingDataSet = null;
+            this.projectTrackingDataSet = projectTrackingDataSet;
+            this.taskBindingSource.DataSource = null;
+            this.taskBindingSource.DataSource = this.projectTrackingDataSet.Task;
         }
     }
 }
