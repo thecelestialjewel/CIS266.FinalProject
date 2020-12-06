@@ -36,11 +36,13 @@ namespace Project.Tracking
         {
             int width = projectDetailsListView.Width / 4; //Four total columns
 
+            //adding headers to columns of listview
             projectDetailsListView.Columns.Add("Employee", width);
             projectDetailsListView.Columns.Add("Task", width);
             projectDetailsListView.Columns.Add("Date", width);
             projectDetailsListView.Columns.Add("Hours", width);
 
+            //allow row to be selected, but not multiple rows
             projectDetailsListView.View = View.Details;
             projectDetailsListView.MultiSelect = false;
             projectDetailsListView.FullRowSelect = true;
@@ -61,9 +63,9 @@ namespace Project.Tracking
                 //Get employee row based on employee id
                 EmployeeRow employee = this.projectTrackingDataSet.Employee.FindById(employeeId);
                 EmployeeTasksRow[] employeeTasks = (EmployeeTasksRow[])employee.GetChildRows("fk_EmployeeTaskToEmployee");
-                
+
                 //Look through each EmployeeTask joining relationship
-                foreach(EmployeeTasksRow row in employeeTasks)
+                foreach (EmployeeTasksRow row in employeeTasks)
                 {
                     //Get current task row for based on task it
                     TaskRow task = projectTrackingDataSet.Task.FindById(row.TaskId);
@@ -98,6 +100,7 @@ namespace Project.Tracking
 
                 }
                 totalHourTextBox.Text = totalHours.ToString();
+                MainForm.SetReadyLabel($"Total Tasks: [{employeeTasks.Length}]");
             }
         }
 
