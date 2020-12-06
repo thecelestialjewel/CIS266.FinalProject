@@ -98,6 +98,9 @@
     <EmbeddedResource Include="EmployeeProjectsAndTasksForm.resx">
       <DependentUpon>EmployeeProjectsAndTasksForm.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="ProjectEmployeesForm.resx">
+      <DependentUpon>ProjectEmployeesForm.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="ProjectTasksForm.resx">
       <DependentUpon>ProjectTasksForm.cs</DependentUpon>
     </EmbeddedResource>
