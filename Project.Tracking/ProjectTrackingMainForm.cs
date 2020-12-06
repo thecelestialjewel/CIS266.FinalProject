@@ -145,5 +145,25 @@ namespace Project.Tracking
         {
             ShowForm(new EmployeeProjectsAndTasksForm(projectTrackingDataSet));
         }
+
+        private void projectsToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void tasksToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void employeeTasksToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void employeesToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }
