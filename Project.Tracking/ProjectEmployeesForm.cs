@@ -18,6 +18,7 @@ namespace Project.Tracking
 
             this.projectTrackingDataSet = null;
             this.projectTrackingDataSet = projectTrackingDataSet;
+            this.projectBindingSource.DataSource = this.projectTrackingDataSet.Project;
            
         }
 
@@ -25,6 +26,11 @@ namespace Project.Tracking
         private ProjectTrackingMainForm MainForm
         {
             get { return (ProjectTrackingMainForm)MdiParent; }
+        }
+
+        private void projectListBox_Format(object sender, ListControlConvertEventArgs e)
+        {
+
         }
     }
 }
