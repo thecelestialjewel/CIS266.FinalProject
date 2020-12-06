@@ -37,7 +37,7 @@ namespace Project.Tracking
             int width = projectDetailsListView.Width / 4; //Four total columns
 
             //adding headers to columns of listview
-            projectDetailsListView.Columns.Add("Employee", width);
+            projectDetailsListView.Columns.Add("Project", width);
             projectDetailsListView.Columns.Add("Task", width);
             projectDetailsListView.Columns.Add("Date", width);
             projectDetailsListView.Columns.Add("Hours", width);
