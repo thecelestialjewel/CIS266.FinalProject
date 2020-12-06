@@ -140,27 +140,31 @@ namespace Project.Tracking
             ShowForm(new ProjectEmployeesForm(projectTrackingDataSet));
         }
 
-        //Click event for employee projects and tasks menu option.
+        //Click event handler for employee projects and tasks menu option.
         private void employeeProjectTasksToolStripMenuItem_Click(object sender, EventArgs e)
         {
             ShowForm(new EmployeeProjectsAndTasksForm(projectTrackingDataSet));
         }
 
+        //Click event handler for project editing.
         private void projectsToolStripMenuItem_Click(object sender, EventArgs e)
         {
 
         }
 
+        //Click  event handler for tasks editing.
         private void tasksToolStripMenuItem_Click(object sender, EventArgs e)
         {
 
         }
-
+        
+        //Click event handler for employee tasks edit.
         private void employeeTasksToolStripMenuItem_Click(object sender, EventArgs e)
         {
 
         }
 
+        //Click event handler for employees edit.
         private void employeesToolStripMenuItem_Click(object sender, EventArgs e)
         {
 
