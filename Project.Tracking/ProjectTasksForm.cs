@@ -21,6 +21,8 @@ namespace Project.Tracking
             this.projectBindingSource.DataSource = this.projectTrackingDataSet;
             this.statusBindingSource.DataSource = this.projectTrackingDataSet;
 
+            statusIdComboBox.DataSource = this.projectTrackingDataSet.Status;
+            managerIdComboBox.DataSource = this.projectTrackingDataSet.Employee;
 
         }
 
