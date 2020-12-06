@@ -19,6 +19,7 @@ namespace Project.Tracking
             this.projectTrackingDataSet = null;
             this.projectTrackingDataSet = projectTrackingDataSet;
             this.projectBindingSource.DataSource = this.projectTrackingDataSet;
+            this.statusBindingSource.DataSource = this.projectTrackingDataSet;
 
 
         }

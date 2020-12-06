@@ -57,8 +57,9 @@
             this.descriptionTextBox = new System.Windows.Forms.TextBox();
             this.startDateDateTimePicker = new System.Windows.Forms.DateTimePicker();
             this.endDateDateTimePicker = new System.Windows.Forms.DateTimePicker();
-            this.statusIdTextBox = new System.Windows.Forms.TextBox();
-            this.managerIdTextBox = new System.Windows.Forms.TextBox();
+            this.statusIdComboBox = new System.Windows.Forms.ComboBox();
+            this.managerIdComboBox = new System.Windows.Forms.ComboBox();
+            this.statusBindingSource = new System.Windows.Forms.BindingSource(this.components);
             idLabel = new System.Windows.Forms.Label();
             nameLabel = new System.Windows.Forms.Label();
             descriptionLabel = new System.Windows.Forms.Label();
@@ -70,6 +71,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.projectBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.projectBindingNavigator)).BeginInit();
             this.projectBindingNavigator.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.statusBindingSource)).BeginInit();
             this.SuspendLayout();
             // 
             // projectTrackingDataSet
@@ -139,7 +141,6 @@
             // 
             this.bindingNavigatorPositionItem.AccessibleName = "Position";
             this.bindingNavigatorPositionItem.AutoSize = false;
-            this.bindingNavigatorPositionItem.Font = new System.Drawing.Font("Segoe UI", 9F);
             this.bindingNavigatorPositionItem.Name = "bindingNavigatorPositionItem";
             this.bindingNavigatorPositionItem.Size = new System.Drawing.Size(50, 23);
             this.bindingNavigatorPositionItem.Text = "0";
@@ -210,7 +211,7 @@
             // idLabel
             // 
             idLabel.AutoSize = true;
-            idLabel.Location = new System.Drawing.Point(91, 37);
+            idLabel.Location = new System.Drawing.Point(11, 31);
             idLabel.Name = "idLabel";
             idLabel.Size = new System.Drawing.Size(19, 13);
             idLabel.TabIndex = 1;
@@ -219,7 +220,7 @@
             // idTextBox
             // 
             this.idTextBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.projectBindingSource, "Id", true));
-            this.idTextBox.Location = new System.Drawing.Point(161, 34);
+            this.idTextBox.Location = new System.Drawing.Point(81, 28);
             this.idTextBox.Name = "idTextBox";
             this.idTextBox.Size = new System.Drawing.Size(200, 20);
             this.idTextBox.TabIndex = 2;
@@ -227,7 +228,7 @@
             // nameLabel
             // 
             nameLabel.AutoSize = true;
-            nameLabel.Location = new System.Drawing.Point(91, 63);
+            nameLabel.Location = new System.Drawing.Point(11, 57);
             nameLabel.Name = "nameLabel";
             nameLabel.Size = new System.Drawing.Size(38, 13);
             nameLabel.TabIndex = 3;
@@ -236,7 +237,7 @@
             // nameTextBox
             // 
             this.nameTextBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.projectBindingSource, "Name", true));
-            this.nameTextBox.Location = new System.Drawing.Point(161, 60);
+            this.nameTextBox.Location = new System.Drawing.Point(81, 54);
             this.nameTextBox.Name = "nameTextBox";
             this.nameTextBox.Size = new System.Drawing.Size(200, 20);
             this.nameTextBox.TabIndex = 4;
@@ -244,7 +245,7 @@
             // descriptionLabel
             // 
             descriptionLabel.AutoSize = true;
-            descriptionLabel.Location = new System.Drawing.Point(91, 89);
+            descriptionLabel.Location = new System.Drawing.Point(11, 83);
             descriptionLabel.Name = "descriptionLabel";
             descriptionLabel.Size = new System.Drawing.Size(63, 13);
             descriptionLabel.TabIndex = 5;
@@ -253,7 +254,7 @@
             // descriptionTextBox
             // 
             this.descriptionTextBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.projectBindingSource, "Description", true));
-            this.descriptionTextBox.Location = new System.Drawing.Point(161, 86);
+            this.descriptionTextBox.Location = new System.Drawing.Point(81, 80);
             this.descriptionTextBox.Name = "descriptionTextBox";
             this.descriptionTextBox.Size = new System.Drawing.Size(200, 20);
             this.descriptionTextBox.TabIndex = 6;
@@ -261,7 +262,7 @@
             // startDateLabel
             // 
             startDateLabel.AutoSize = true;
-            startDateLabel.Location = new System.Drawing.Point(91, 116);
+            startDateLabel.Location = new System.Drawing.Point(11, 110);
             startDateLabel.Name = "startDateLabel";
             startDateLabel.Size = new System.Drawing.Size(58, 13);
             startDateLabel.TabIndex = 7;
@@ -270,7 +271,7 @@
             // startDateDateTimePicker
             // 
             this.startDateDateTimePicker.DataBindings.Add(new System.Windows.Forms.Binding("Value", this.projectBindingSource, "StartDate", true));
-            this.startDateDateTimePicker.Location = new System.Drawing.Point(161, 112);
+            this.startDateDateTimePicker.Location = new System.Drawing.Point(81, 106);
             this.startDateDateTimePicker.Name = "startDateDateTimePicker";
             this.startDateDateTimePicker.Size = new System.Drawing.Size(200, 20);
             this.startDateDateTimePicker.TabIndex = 8;
@@ -278,7 +279,7 @@
             // endDateLabel
             // 
             endDateLabel.AutoSize = true;
-            endDateLabel.Location = new System.Drawing.Point(91, 142);
+            endDateLabel.Location = new System.Drawing.Point(11, 136);
             endDateLabel.Name = "endDateLabel";
             endDateLabel.Size = new System.Drawing.Size(55, 13);
             endDateLabel.TabIndex = 9;
@@ -287,7 +288,7 @@
             // endDateDateTimePicker
             // 
             this.endDateDateTimePicker.DataBindings.Add(new System.Windows.Forms.Binding("Value", this.projectBindingSource, "EndDate", true));
-            this.endDateDateTimePicker.Location = new System.Drawing.Point(161, 138);
+            this.endDateDateTimePicker.Location = new System.Drawing.Point(81, 132);
             this.endDateDateTimePicker.Name = "endDateDateTimePicker";
             this.endDateDateTimePicker.Size = new System.Drawing.Size(200, 20);
             this.endDateDateTimePicker.TabIndex = 10;
@@ -295,36 +296,43 @@
             // statusIdLabel
             // 
             statusIdLabel.AutoSize = true;
-            statusIdLabel.Location = new System.Drawing.Point(91, 167);
+            statusIdLabel.Location = new System.Drawing.Point(11, 161);
             statusIdLabel.Name = "statusIdLabel";
             statusIdLabel.Size = new System.Drawing.Size(52, 13);
             statusIdLabel.TabIndex = 11;
             statusIdLabel.Text = "Status Id:";
             // 
-            // statusIdTextBox
+            // statusIdComboBox
             // 
-            this.statusIdTextBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.projectBindingSource, "StatusId", true));
-            this.statusIdTextBox.Location = new System.Drawing.Point(161, 164);
-            this.statusIdTextBox.Name = "statusIdTextBox";
-            this.statusIdTextBox.Size = new System.Drawing.Size(200, 20);
-            this.statusIdTextBox.TabIndex = 12;
+            this.statusIdComboBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.projectBindingSource, "StatusId", true));
+            this.statusIdComboBox.FormattingEnabled = true;
+            this.statusIdComboBox.Location = new System.Drawing.Point(81, 158);
+            this.statusIdComboBox.Name = "statusIdComboBox";
+            this.statusIdComboBox.Size = new System.Drawing.Size(200, 21);
+            this.statusIdComboBox.TabIndex = 12;
             // 
             // managerIdLabel
             // 
             managerIdLabel.AutoSize = true;
-            managerIdLabel.Location = new System.Drawing.Point(91, 193);
+            managerIdLabel.Location = new System.Drawing.Point(11, 188);
             managerIdLabel.Name = "managerIdLabel";
             managerIdLabel.Size = new System.Drawing.Size(64, 13);
             managerIdLabel.TabIndex = 13;
             managerIdLabel.Text = "Manager Id:";
             // 
-            // managerIdTextBox
+            // managerIdComboBox
             // 
-            this.managerIdTextBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.projectBindingSource, "ManagerId", true));
-            this.managerIdTextBox.Location = new System.Drawing.Point(161, 190);
-            this.managerIdTextBox.Name = "managerIdTextBox";
-            this.managerIdTextBox.Size = new System.Drawing.Size(200, 20);
-            this.managerIdTextBox.TabIndex = 14;
+            this.managerIdComboBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.projectBindingSource, "ManagerId", true));
+            this.managerIdComboBox.FormattingEnabled = true;
+            this.managerIdComboBox.Location = new System.Drawing.Point(81, 185);
+            this.managerIdComboBox.Name = "managerIdComboBox";
+            this.managerIdComboBox.Size = new System.Drawing.Size(200, 21);
+            this.managerIdComboBox.TabIndex = 14;
+            // 
+            // statusBindingSource
+            // 
+            this.statusBindingSource.DataMember = "Status";
+            this.statusBindingSource.DataSource = this.projectTrackingDataSet;
             // 
             // ProjectTasksForm
             // 
@@ -342,17 +350,18 @@
             this.Controls.Add(endDateLabel);
             this.Controls.Add(this.endDateDateTimePicker);
             this.Controls.Add(statusIdLabel);
-            this.Controls.Add(this.statusIdTextBox);
+            this.Controls.Add(this.statusIdComboBox);
             this.Controls.Add(managerIdLabel);
-            this.Controls.Add(this.managerIdTextBox);
+            this.Controls.Add(this.managerIdComboBox);
             this.Controls.Add(this.projectBindingNavigator);
             this.Name = "ProjectTasksForm";
-            this.Text = "Projects and Tasks";
+            this.Text = "Project and Tasks";
             ((System.ComponentModel.ISupportInitialize)(this.projectTrackingDataSet)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.projectBindingSource)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.projectBindingNavigator)).EndInit();
             this.projectBindingNavigator.ResumeLayout(false);
             this.projectBindingNavigator.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.statusBindingSource)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -380,7 +389,8 @@
         private System.Windows.Forms.TextBox descriptionTextBox;
         private System.Windows.Forms.DateTimePicker startDateDateTimePicker;
         private System.Windows.Forms.DateTimePicker endDateDateTimePicker;
-        private System.Windows.Forms.TextBox statusIdTextBox;
-        private System.Windows.Forms.TextBox managerIdTextBox;
+        private System.Windows.Forms.ComboBox statusIdComboBox;
+        private System.Windows.Forms.ComboBox managerIdComboBox;
+        private System.Windows.Forms.BindingSource statusBindingSource;
     }
 }
