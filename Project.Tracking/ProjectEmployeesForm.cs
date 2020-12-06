@@ -15,6 +15,10 @@ namespace Project.Tracking
         public ProjectEmployeesForm(ProjectTrackingDataSet projectTrackingDataSet)
         {
             InitializeComponent();
+
+            this.projectTrackingDataSet = null;
+            this.projectTrackingDataSet = projectTrackingDataSet;
+           
         }
 
         //Getting main form to access public methods and properities.
