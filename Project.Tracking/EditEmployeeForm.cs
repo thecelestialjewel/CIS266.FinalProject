@@ -20,5 +20,11 @@ namespace Project.Tracking
             this.employeeBindingSource.DataSource = null;
             this.employeeBindingSource.DataSource = this.projectTrackingDataSet.Employee;
         }
+
+        //Getting main form to access public methods and properities.
+        private ProjectTrackingMainForm MainForm
+        {
+            get { return (ProjectTrackingMainForm)MdiParent; }
+        }
     }
 }
