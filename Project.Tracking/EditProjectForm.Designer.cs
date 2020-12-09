@@ -57,9 +57,9 @@
             this.startDateDateTimePicker = new System.Windows.Forms.DateTimePicker();
             this.endDateDateTimePicker = new System.Windows.Forms.DateTimePicker();
             this.statusIdComboBox = new System.Windows.Forms.ComboBox();
-            this.managerIdComboBox = new System.Windows.Forms.ComboBox();
-            this.projectTrackingDataSet = new Project.Tracking.ProjectTrackingDataSet();
             this.statusBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.projectTrackingDataSet = new Project.Tracking.ProjectTrackingDataSet();
+            this.managerIdComboBox = new System.Windows.Forms.ComboBox();
             this.employeeBindingSource = new System.Windows.Forms.BindingSource(this.components);
             idLabel = new System.Windows.Forms.Label();
             nameLabel = new System.Windows.Forms.Label();
@@ -71,8 +71,8 @@
             ((System.ComponentModel.ISupportInitialize)(this.projectBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.projectBindingNavigator)).BeginInit();
             this.projectBindingNavigator.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.projectTrackingDataSet)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.statusBindingSource)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.projectTrackingDataSet)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.employeeBindingSource)).BeginInit();
             this.SuspendLayout();
             // 
@@ -221,6 +221,7 @@
             // 
             this.bindingNavigatorPositionItem.AccessibleName = "Position";
             this.bindingNavigatorPositionItem.AutoSize = false;
+            this.bindingNavigatorPositionItem.Font = new System.Drawing.Font("Segoe UI", 9F);
             this.bindingNavigatorPositionItem.Name = "bindingNavigatorPositionItem";
             this.bindingNavigatorPositionItem.Size = new System.Drawing.Size(50, 23);
             this.bindingNavigatorPositionItem.Text = "0";
@@ -316,6 +317,16 @@
             this.statusIdComboBox.TabIndex = 12;
             this.statusIdComboBox.ValueMember = "Id";
             // 
+            // statusBindingSource
+            // 
+            this.statusBindingSource.DataMember = "Status";
+            this.statusBindingSource.DataSource = this.projectTrackingDataSet;
+            // 
+            // projectTrackingDataSet
+            // 
+            this.projectTrackingDataSet.DataSetName = "ProjectTrackingDataSet";
+            this.projectTrackingDataSet.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
+            // 
             // managerIdComboBox
             // 
             this.managerIdComboBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.employeeBindingSource, "FirstName", true));
@@ -324,19 +335,9 @@
             this.managerIdComboBox.FormattingEnabled = true;
             this.managerIdComboBox.Location = new System.Drawing.Point(90, 195);
             this.managerIdComboBox.Name = "managerIdComboBox";
-            this.managerIdComboBox.Size = new System.Drawing.Size(94, 21);
+            this.managerIdComboBox.Size = new System.Drawing.Size(200, 21);
             this.managerIdComboBox.TabIndex = 14;
             this.managerIdComboBox.ValueMember = "Id";
-            // 
-            // projectTrackingDataSet
-            // 
-            this.projectTrackingDataSet.DataSetName = "ProjectTrackingDataSet";
-            this.projectTrackingDataSet.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
-            // 
-            // statusBindingSource
-            // 
-            this.statusBindingSource.DataMember = "Status";
-            this.statusBindingSource.DataSource = this.projectTrackingDataSet;
             // 
             // employeeBindingSource
             // 
@@ -370,8 +371,8 @@
             ((System.ComponentModel.ISupportInitialize)(this.projectBindingNavigator)).EndInit();
             this.projectBindingNavigator.ResumeLayout(false);
             this.projectBindingNavigator.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.projectTrackingDataSet)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.statusBindingSource)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.projectTrackingDataSet)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.employeeBindingSource)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
