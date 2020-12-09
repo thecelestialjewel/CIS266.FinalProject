@@ -1,4 +1,6 @@
-﻿using System;
+﻿//Christine Jordan 12.7.2020 Term Project
+//Main Form 
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
