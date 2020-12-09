@@ -21,11 +21,11 @@ namespace Project.Tracking
             this.employeeTasksBindingSource.DataSource = null;
             this.employeeTasksBindingSource.DataSource = this.projectTrackingDataSet.EmployeeTasks;
 
-            this.taskBindingSource.DataSource = null;
-            this.taskBindingSource.DataSource = this.projectTrackingDataSet.Task;
+            //this.taskBindingSource.DataSource = null;
+            //this.taskBindingSource.DataSource = this.projectTrackingDataSet.Task;
 
-            this.employeeBindingSource.DataSource = null;
-            this.employeeBindingSource.DataSource = this.projectTrackingDataSet.Employee;
+            //this.employeeBindingSource.DataSource = null;
+            //this.employeeBindingSource.DataSource = this.projectTrackingDataSet.Employee;
         }
 
         //Getting main form to access public methods and properities.
@@ -51,12 +51,6 @@ namespace Project.Tracking
                 MessageBox.Show(ex.Message);
                 MainForm.SetReadyLabel("Error saving employee tasks!");
             }
-        }
-
-        private void EditEmployeeTaskForm_Load(object sender, EventArgs e)
-        {
-
-
         }
     }
 }

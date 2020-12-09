@@ -23,11 +23,11 @@ namespace Project.Tracking
             this.projectBindingSource.DataSource = null;
             this.projectBindingSource.DataSource = this.projectTrackingDataSet.Project;
 
-            this.statusBindingSource.DataSource = null;
-            this.statusBindingSource.DataSource = this.projectTrackingDataSet.Status;
+            //this.statusBindingSource.DataSource = null;
+            //this.statusBindingSource.DataSource = this.projectTrackingDataSet.Status;
 
-            this.employeeBindingSource.DataSource = null;
-            this.employeeBindingSource.DataSource = this.projectTrackingDataSet.Employee;
+            //this.employeeBindingSource.DataSource = null;
+            //this.employeeBindingSource.DataSource = this.projectTrackingDataSet.Employee;
 
             
         }
@@ -55,12 +55,6 @@ namespace Project.Tracking
                 MessageBox.Show(ex.Message);
                 MainForm.SetReadyLabel("Error saving project!");
             }
-        }
-
-        private void EditProjectForm_Load(object sender, EventArgs e)
-        {
-           
-
         }
     }
 }
