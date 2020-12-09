@@ -32,7 +32,6 @@
             System.Windows.Forms.Label idLabel;
             System.Windows.Forms.Label nameLabel;
             System.Windows.Forms.Label descriptionLabel;
-            System.Windows.Forms.Label hoursWorkedLabel;
             System.Windows.Forms.Label startDateLabel;
             System.Windows.Forms.Label endDateLabel;
             System.Windows.Forms.Label projectIdLabel;
@@ -55,15 +54,16 @@
             this.idTextBox = new System.Windows.Forms.TextBox();
             this.nameTextBox = new System.Windows.Forms.TextBox();
             this.descriptionTextBox = new System.Windows.Forms.TextBox();
-            this.hoursWorkedTextBox = new System.Windows.Forms.TextBox();
             this.startDateDateTimePicker = new System.Windows.Forms.DateTimePicker();
             this.endDateDateTimePicker = new System.Windows.Forms.DateTimePicker();
             this.projectIdComboBox = new System.Windows.Forms.ComboBox();
             this.statusIdComboBox = new System.Windows.Forms.ComboBox();
+            this.projectTrackingDataSet = new Project.Tracking.ProjectTrackingDataSet();
+            this.projectBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.statusBindingSource = new System.Windows.Forms.BindingSource(this.components);
             idLabel = new System.Windows.Forms.Label();
             nameLabel = new System.Windows.Forms.Label();
             descriptionLabel = new System.Windows.Forms.Label();
-            hoursWorkedLabel = new System.Windows.Forms.Label();
             startDateLabel = new System.Windows.Forms.Label();
             endDateLabel = new System.Windows.Forms.Label();
             projectIdLabel = new System.Windows.Forms.Label();
@@ -71,6 +71,9 @@
             ((System.ComponentModel.ISupportInitialize)(this.taskBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.taskBindingNavigator)).BeginInit();
             this.taskBindingNavigator.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.projectTrackingDataSet)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.projectBindingSource)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.statusBindingSource)).BeginInit();
             this.SuspendLayout();
             // 
             // idLabel
@@ -100,19 +103,10 @@
             descriptionLabel.TabIndex = 5;
             descriptionLabel.Text = "Description:";
             // 
-            // hoursWorkedLabel
-            // 
-            hoursWorkedLabel.AutoSize = true;
-            hoursWorkedLabel.Location = new System.Drawing.Point(17, 116);
-            hoursWorkedLabel.Name = "hoursWorkedLabel";
-            hoursWorkedLabel.Size = new System.Drawing.Size(79, 13);
-            hoursWorkedLabel.TabIndex = 7;
-            hoursWorkedLabel.Text = "Hours Worked:";
-            // 
             // startDateLabel
             // 
             startDateLabel.AutoSize = true;
-            startDateLabel.Location = new System.Drawing.Point(17, 143);
+            startDateLabel.Location = new System.Drawing.Point(17, 120);
             startDateLabel.Name = "startDateLabel";
             startDateLabel.Size = new System.Drawing.Size(58, 13);
             startDateLabel.TabIndex = 9;
@@ -121,7 +115,7 @@
             // endDateLabel
             // 
             endDateLabel.AutoSize = true;
-            endDateLabel.Location = new System.Drawing.Point(17, 169);
+            endDateLabel.Location = new System.Drawing.Point(17, 146);
             endDateLabel.Name = "endDateLabel";
             endDateLabel.Size = new System.Drawing.Size(55, 13);
             endDateLabel.TabIndex = 11;
@@ -130,7 +124,7 @@
             // projectIdLabel
             // 
             projectIdLabel.AutoSize = true;
-            projectIdLabel.Location = new System.Drawing.Point(17, 194);
+            projectIdLabel.Location = new System.Drawing.Point(17, 171);
             projectIdLabel.Name = "projectIdLabel";
             projectIdLabel.Size = new System.Drawing.Size(55, 13);
             projectIdLabel.TabIndex = 13;
@@ -139,7 +133,7 @@
             // statusIdLabel
             // 
             statusIdLabel.AutoSize = true;
-            statusIdLabel.Location = new System.Drawing.Point(17, 221);
+            statusIdLabel.Location = new System.Drawing.Point(17, 198);
             statusIdLabel.Name = "statusIdLabel";
             statusIdLabel.Size = new System.Drawing.Size(52, 13);
             statusIdLabel.TabIndex = 15;
@@ -227,7 +221,6 @@
             // 
             this.bindingNavigatorPositionItem.AccessibleName = "Position";
             this.bindingNavigatorPositionItem.AutoSize = false;
-            this.bindingNavigatorPositionItem.Font = new System.Drawing.Font("Segoe UI", 9F);
             this.bindingNavigatorPositionItem.Name = "bindingNavigatorPositionItem";
             this.bindingNavigatorPositionItem.Size = new System.Drawing.Size(50, 23);
             this.bindingNavigatorPositionItem.Text = "0";
@@ -295,18 +288,10 @@
             this.descriptionTextBox.Size = new System.Drawing.Size(200, 20);
             this.descriptionTextBox.TabIndex = 6;
             // 
-            // hoursWorkedTextBox
-            // 
-            this.hoursWorkedTextBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.taskBindingSource, "HoursWorked", true));
-            this.hoursWorkedTextBox.Location = new System.Drawing.Point(102, 113);
-            this.hoursWorkedTextBox.Name = "hoursWorkedTextBox";
-            this.hoursWorkedTextBox.Size = new System.Drawing.Size(200, 20);
-            this.hoursWorkedTextBox.TabIndex = 8;
-            // 
             // startDateDateTimePicker
             // 
             this.startDateDateTimePicker.DataBindings.Add(new System.Windows.Forms.Binding("Value", this.taskBindingSource, "StartDate", true));
-            this.startDateDateTimePicker.Location = new System.Drawing.Point(102, 139);
+            this.startDateDateTimePicker.Location = new System.Drawing.Point(102, 116);
             this.startDateDateTimePicker.Name = "startDateDateTimePicker";
             this.startDateDateTimePicker.Size = new System.Drawing.Size(200, 20);
             this.startDateDateTimePicker.TabIndex = 10;
@@ -314,28 +299,49 @@
             // endDateDateTimePicker
             // 
             this.endDateDateTimePicker.DataBindings.Add(new System.Windows.Forms.Binding("Value", this.taskBindingSource, "EndDate", true));
-            this.endDateDateTimePicker.Location = new System.Drawing.Point(102, 165);
+            this.endDateDateTimePicker.Location = new System.Drawing.Point(102, 142);
             this.endDateDateTimePicker.Name = "endDateDateTimePicker";
             this.endDateDateTimePicker.Size = new System.Drawing.Size(200, 20);
             this.endDateDateTimePicker.TabIndex = 12;
             // 
             // projectIdComboBox
             // 
-            this.projectIdComboBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.taskBindingSource, "ProjectId", true));
+            this.projectIdComboBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.projectBindingSource, "Name", true));
+            this.projectIdComboBox.DataSource = this.projectBindingSource;
+            this.projectIdComboBox.DisplayMember = "Name";
             this.projectIdComboBox.FormattingEnabled = true;
-            this.projectIdComboBox.Location = new System.Drawing.Point(102, 191);
+            this.projectIdComboBox.Location = new System.Drawing.Point(102, 168);
             this.projectIdComboBox.Name = "projectIdComboBox";
             this.projectIdComboBox.Size = new System.Drawing.Size(131, 21);
             this.projectIdComboBox.TabIndex = 14;
+            this.projectIdComboBox.ValueMember = "Id";
             // 
             // statusIdComboBox
             // 
-            this.statusIdComboBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.taskBindingSource, "StatusId", true));
+            this.statusIdComboBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.statusBindingSource, "Status", true));
+            this.statusIdComboBox.DataSource = this.statusBindingSource;
+            this.statusIdComboBox.DisplayMember = "Status";
             this.statusIdComboBox.FormattingEnabled = true;
-            this.statusIdComboBox.Location = new System.Drawing.Point(102, 218);
+            this.statusIdComboBox.Location = new System.Drawing.Point(102, 195);
             this.statusIdComboBox.Name = "statusIdComboBox";
             this.statusIdComboBox.Size = new System.Drawing.Size(131, 21);
             this.statusIdComboBox.TabIndex = 16;
+            this.statusIdComboBox.ValueMember = "Id";
+            // 
+            // projectTrackingDataSet
+            // 
+            this.projectTrackingDataSet.DataSetName = "ProjectTrackingDataSet";
+            this.projectTrackingDataSet.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
+            // 
+            // projectBindingSource
+            // 
+            this.projectBindingSource.DataMember = "Project";
+            this.projectBindingSource.DataSource = this.projectTrackingDataSet;
+            // 
+            // statusBindingSource
+            // 
+            this.statusBindingSource.DataMember = "Status";
+            this.statusBindingSource.DataSource = this.projectTrackingDataSet;
             // 
             // EditTaskForm
             // 
@@ -348,8 +354,6 @@
             this.Controls.Add(this.nameTextBox);
             this.Controls.Add(descriptionLabel);
             this.Controls.Add(this.descriptionTextBox);
-            this.Controls.Add(hoursWorkedLabel);
-            this.Controls.Add(this.hoursWorkedTextBox);
             this.Controls.Add(startDateLabel);
             this.Controls.Add(this.startDateDateTimePicker);
             this.Controls.Add(endDateLabel);
@@ -361,10 +365,14 @@
             this.Controls.Add(this.taskBindingNavigator);
             this.Name = "EditTaskForm";
             this.Text = "Edit Task";
+            this.Load += new System.EventHandler(this.EditTaskForm_Load);
             ((System.ComponentModel.ISupportInitialize)(this.taskBindingSource)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.taskBindingNavigator)).EndInit();
             this.taskBindingNavigator.ResumeLayout(false);
             this.taskBindingNavigator.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.projectTrackingDataSet)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.projectBindingSource)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.statusBindingSource)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -388,10 +396,12 @@
         private System.Windows.Forms.TextBox idTextBox;
         private System.Windows.Forms.TextBox nameTextBox;
         private System.Windows.Forms.TextBox descriptionTextBox;
-        private System.Windows.Forms.TextBox hoursWorkedTextBox;
         private System.Windows.Forms.DateTimePicker startDateDateTimePicker;
         private System.Windows.Forms.DateTimePicker endDateDateTimePicker;
         private System.Windows.Forms.ComboBox projectIdComboBox;
         private System.Windows.Forms.ComboBox statusIdComboBox;
+        private ProjectTrackingDataSet projectTrackingDataSet;
+        private System.Windows.Forms.BindingSource projectBindingSource;
+        private System.Windows.Forms.BindingSource statusBindingSource;
     }
 }

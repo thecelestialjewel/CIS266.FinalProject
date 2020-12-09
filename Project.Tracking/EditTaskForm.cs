@@ -16,8 +16,17 @@ namespace Project.Tracking
         public EditTaskForm(ProjectTrackingDataSet projectTrackingDataSet)
         {
             InitializeComponent();
+            this.projectTrackingDataSet = null;
+            this.projectTrackingDataSet = projectTrackingDataSet;
+
             this.taskBindingSource.DataSource = null;
-            this.taskBindingSource.DataSource = projectTrackingDataSet.Task;
+            this.taskBindingSource.DataSource = this.projectTrackingDataSet.Task;
+
+            this.projectBindingSource.DataSource = null;
+            this.projectBindingSource.DataSource = this.projectTrackingDataSet.Project;
+
+            this.statusBindingSource.DataSource = null;
+            this.statusBindingSource.DataSource = this.projectTrackingDataSet.Status;
         }
 
         //Getting main form to access public methods and properities.
@@ -43,6 +52,11 @@ namespace Project.Tracking
                 MessageBox.Show(ex.Message);
                 MainForm.SetReadyLabel("Error saving tasks!");
             }
+        }
+
+        private void EditTaskForm_Load(object sender, EventArgs e)
+        {
+
         }
     }
 }
