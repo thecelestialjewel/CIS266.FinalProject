@@ -307,6 +307,7 @@
             // projectIdComboBox
             // 
             this.projectIdComboBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.projectBindingSource, "Name", true));
+            this.projectIdComboBox.DataBindings.Add(new System.Windows.Forms.Binding("SelectedValue", this.projectBindingSource, "Id", true));
             this.projectIdComboBox.DataSource = this.projectBindingSource;
             this.projectIdComboBox.DisplayMember = "Name";
             this.projectIdComboBox.FormattingEnabled = true;
