@@ -17,6 +17,7 @@ namespace Project.Tracking
             InitializeComponent();
             this.employeeTasksBindingSource.DataSource = null;
             this.employeeTasksBindingSource.DataSource = projectTrackingDataSet.EmployeeTasks;
+            this.taskBindingSource.DataSource = projectTrackingDataSet.Task;
         }
 
         //Getting main form to access public methods and properities.
@@ -42,6 +43,11 @@ namespace Project.Tracking
                 MessageBox.Show(ex.Message);
                 MainForm.SetReadyLabel("Error saving employee tasks!");
             }
+        }
+
+        private void EditEmployeeTaskForm_Load(object sender, EventArgs e)
+        {
+            
         }
     }
 }
