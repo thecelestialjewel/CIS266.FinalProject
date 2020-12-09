@@ -15,16 +15,33 @@ namespace Project.Tracking
         public EditEmployeeForm(ProjectTrackingDataSet projectTrackingDataSet)
         {
             InitializeComponent();
-            this.projectTrackingDataSet = null;
-            this.projectTrackingDataSet = projectTrackingDataSet;
             this.employeeBindingSource.DataSource = null;
-            this.employeeBindingSource.DataSource = this.projectTrackingDataSet.Employee;
+            this.employeeBindingSource.DataSource = projectTrackingDataSet.Employee;
         }
 
         //Getting main form to access public methods and properities.
         private ProjectTrackingMainForm MainForm
         {
             get { return (ProjectTrackingMainForm)MdiParent; }
+        }
+
+        //Event handler to save employee data
+        private void employeeBindingNavigatorSaveItem_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                Validate();
+                employeeBindingSource.EndEdit();
+                //Save the data
+                MainForm.SaveData();
+            }
+            catch (Exception ex)
+            {
+
+                //If not valid, display message.
+                MessageBox.Show(ex.Message);
+                MainForm.SetReadyLabel("Error saving employee!");
+            }
         }
     }
 }

@@ -29,24 +29,23 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(EditEmployeeTaskForm));
             System.Windows.Forms.Label idLabel;
             System.Windows.Forms.Label taskIdLabel1;
             System.Windows.Forms.Label employeeIdLabel1;
-            this.projectTrackingDataSet = new Project.Tracking.ProjectTrackingDataSet();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(EditEmployeeTaskForm));
             this.employeeTasksBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.employeeTasksBindingNavigator = new System.Windows.Forms.BindingNavigator(this.components);
+            this.bindingNavigatorAddNewItem = new System.Windows.Forms.ToolStripButton();
+            this.bindingNavigatorCountItem = new System.Windows.Forms.ToolStripLabel();
+            this.bindingNavigatorDeleteItem = new System.Windows.Forms.ToolStripButton();
             this.bindingNavigatorMoveFirstItem = new System.Windows.Forms.ToolStripButton();
             this.bindingNavigatorMovePreviousItem = new System.Windows.Forms.ToolStripButton();
             this.bindingNavigatorSeparator = new System.Windows.Forms.ToolStripSeparator();
             this.bindingNavigatorPositionItem = new System.Windows.Forms.ToolStripTextBox();
-            this.bindingNavigatorCountItem = new System.Windows.Forms.ToolStripLabel();
             this.bindingNavigatorSeparator1 = new System.Windows.Forms.ToolStripSeparator();
             this.bindingNavigatorMoveNextItem = new System.Windows.Forms.ToolStripButton();
             this.bindingNavigatorMoveLastItem = new System.Windows.Forms.ToolStripButton();
             this.bindingNavigatorSeparator2 = new System.Windows.Forms.ToolStripSeparator();
-            this.bindingNavigatorAddNewItem = new System.Windows.Forms.ToolStripButton();
-            this.bindingNavigatorDeleteItem = new System.Windows.Forms.ToolStripButton();
             this.employeeTasksBindingNavigatorSaveItem = new System.Windows.Forms.ToolStripButton();
             this.idTextBox = new System.Windows.Forms.TextBox();
             this.taskIdComboBox = new System.Windows.Forms.ComboBox();
@@ -54,21 +53,37 @@
             idLabel = new System.Windows.Forms.Label();
             taskIdLabel1 = new System.Windows.Forms.Label();
             employeeIdLabel1 = new System.Windows.Forms.Label();
-            ((System.ComponentModel.ISupportInitialize)(this.projectTrackingDataSet)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.employeeTasksBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.employeeTasksBindingNavigator)).BeginInit();
             this.employeeTasksBindingNavigator.SuspendLayout();
             this.SuspendLayout();
             // 
-            // projectTrackingDataSet
+            // idLabel
             // 
-            this.projectTrackingDataSet.DataSetName = "ProjectTrackingDataSet";
-            this.projectTrackingDataSet.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
+            idLabel.AutoSize = true;
+            idLabel.Location = new System.Drawing.Point(15, 37);
+            idLabel.Name = "idLabel";
+            idLabel.Size = new System.Drawing.Size(19, 13);
+            idLabel.TabIndex = 1;
+            idLabel.Text = "Id:";
             // 
-            // employeeTasksBindingSource
+            // taskIdLabel1
             // 
-            this.employeeTasksBindingSource.DataMember = "EmployeeTasks";
-            this.employeeTasksBindingSource.DataSource = this.projectTrackingDataSet;
+            taskIdLabel1.AutoSize = true;
+            taskIdLabel1.Location = new System.Drawing.Point(15, 63);
+            taskIdLabel1.Name = "taskIdLabel1";
+            taskIdLabel1.Size = new System.Drawing.Size(46, 13);
+            taskIdLabel1.TabIndex = 9;
+            taskIdLabel1.Text = "Task Id:";
+            // 
+            // employeeIdLabel1
+            // 
+            employeeIdLabel1.AutoSize = true;
+            employeeIdLabel1.Location = new System.Drawing.Point(15, 90);
+            employeeIdLabel1.Name = "employeeIdLabel1";
+            employeeIdLabel1.Size = new System.Drawing.Size(68, 13);
+            employeeIdLabel1.TabIndex = 11;
+            employeeIdLabel1.Text = "Employee Id:";
             // 
             // employeeTasksBindingNavigator
             // 
@@ -100,6 +115,31 @@
             this.employeeTasksBindingNavigator.TabIndex = 0;
             this.employeeTasksBindingNavigator.Text = "bindingNavigator1";
             // 
+            // bindingNavigatorAddNewItem
+            // 
+            this.bindingNavigatorAddNewItem.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.bindingNavigatorAddNewItem.Image = ((System.Drawing.Image)(resources.GetObject("bindingNavigatorAddNewItem.Image")));
+            this.bindingNavigatorAddNewItem.Name = "bindingNavigatorAddNewItem";
+            this.bindingNavigatorAddNewItem.RightToLeftAutoMirrorImage = true;
+            this.bindingNavigatorAddNewItem.Size = new System.Drawing.Size(23, 22);
+            this.bindingNavigatorAddNewItem.Text = "Add new";
+            // 
+            // bindingNavigatorCountItem
+            // 
+            this.bindingNavigatorCountItem.Name = "bindingNavigatorCountItem";
+            this.bindingNavigatorCountItem.Size = new System.Drawing.Size(35, 22);
+            this.bindingNavigatorCountItem.Text = "of {0}";
+            this.bindingNavigatorCountItem.ToolTipText = "Total number of items";
+            // 
+            // bindingNavigatorDeleteItem
+            // 
+            this.bindingNavigatorDeleteItem.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.bindingNavigatorDeleteItem.Image = ((System.Drawing.Image)(resources.GetObject("bindingNavigatorDeleteItem.Image")));
+            this.bindingNavigatorDeleteItem.Name = "bindingNavigatorDeleteItem";
+            this.bindingNavigatorDeleteItem.RightToLeftAutoMirrorImage = true;
+            this.bindingNavigatorDeleteItem.Size = new System.Drawing.Size(23, 22);
+            this.bindingNavigatorDeleteItem.Text = "Delete";
+            // 
             // bindingNavigatorMoveFirstItem
             // 
             this.bindingNavigatorMoveFirstItem.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
@@ -127,21 +167,15 @@
             // 
             this.bindingNavigatorPositionItem.AccessibleName = "Position";
             this.bindingNavigatorPositionItem.AutoSize = false;
+            this.bindingNavigatorPositionItem.Font = new System.Drawing.Font("Segoe UI", 9F);
             this.bindingNavigatorPositionItem.Name = "bindingNavigatorPositionItem";
             this.bindingNavigatorPositionItem.Size = new System.Drawing.Size(50, 23);
             this.bindingNavigatorPositionItem.Text = "0";
             this.bindingNavigatorPositionItem.ToolTipText = "Current position";
             // 
-            // bindingNavigatorCountItem
-            // 
-            this.bindingNavigatorCountItem.Name = "bindingNavigatorCountItem";
-            this.bindingNavigatorCountItem.Size = new System.Drawing.Size(35, 22);
-            this.bindingNavigatorCountItem.Text = "of {0}";
-            this.bindingNavigatorCountItem.ToolTipText = "Total number of items";
-            // 
             // bindingNavigatorSeparator1
             // 
-            this.bindingNavigatorSeparator1.Name = "bindingNavigatorSeparator";
+            this.bindingNavigatorSeparator1.Name = "bindingNavigatorSeparator1";
             this.bindingNavigatorSeparator1.Size = new System.Drawing.Size(6, 25);
             // 
             // bindingNavigatorMoveNextItem
@@ -164,44 +198,17 @@
             // 
             // bindingNavigatorSeparator2
             // 
-            this.bindingNavigatorSeparator2.Name = "bindingNavigatorSeparator";
+            this.bindingNavigatorSeparator2.Name = "bindingNavigatorSeparator2";
             this.bindingNavigatorSeparator2.Size = new System.Drawing.Size(6, 25);
-            // 
-            // bindingNavigatorAddNewItem
-            // 
-            this.bindingNavigatorAddNewItem.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this.bindingNavigatorAddNewItem.Image = ((System.Drawing.Image)(resources.GetObject("bindingNavigatorAddNewItem.Image")));
-            this.bindingNavigatorAddNewItem.Name = "bindingNavigatorAddNewItem";
-            this.bindingNavigatorAddNewItem.RightToLeftAutoMirrorImage = true;
-            this.bindingNavigatorAddNewItem.Size = new System.Drawing.Size(23, 22);
-            this.bindingNavigatorAddNewItem.Text = "Add new";
-            // 
-            // bindingNavigatorDeleteItem
-            // 
-            this.bindingNavigatorDeleteItem.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this.bindingNavigatorDeleteItem.Image = ((System.Drawing.Image)(resources.GetObject("bindingNavigatorDeleteItem.Image")));
-            this.bindingNavigatorDeleteItem.Name = "bindingNavigatorDeleteItem";
-            this.bindingNavigatorDeleteItem.RightToLeftAutoMirrorImage = true;
-            this.bindingNavigatorDeleteItem.Size = new System.Drawing.Size(23, 22);
-            this.bindingNavigatorDeleteItem.Text = "Delete";
             // 
             // employeeTasksBindingNavigatorSaveItem
             // 
             this.employeeTasksBindingNavigatorSaveItem.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this.employeeTasksBindingNavigatorSaveItem.Enabled = false;
             this.employeeTasksBindingNavigatorSaveItem.Image = ((System.Drawing.Image)(resources.GetObject("employeeTasksBindingNavigatorSaveItem.Image")));
             this.employeeTasksBindingNavigatorSaveItem.Name = "employeeTasksBindingNavigatorSaveItem";
             this.employeeTasksBindingNavigatorSaveItem.Size = new System.Drawing.Size(23, 22);
             this.employeeTasksBindingNavigatorSaveItem.Text = "Save Data";
-            // 
-            // idLabel
-            // 
-            idLabel.AutoSize = true;
-            idLabel.Location = new System.Drawing.Point(15, 37);
-            idLabel.Name = "idLabel";
-            idLabel.Size = new System.Drawing.Size(19, 13);
-            idLabel.TabIndex = 1;
-            idLabel.Text = "Id:";
+            this.employeeTasksBindingNavigatorSaveItem.Click += new System.EventHandler(this.employeeTasksBindingNavigatorSaveItem_Click);
             // 
             // idTextBox
             // 
@@ -212,15 +219,6 @@
             this.idTextBox.Size = new System.Drawing.Size(35, 20);
             this.idTextBox.TabIndex = 2;
             // 
-            // taskIdLabel1
-            // 
-            taskIdLabel1.AutoSize = true;
-            taskIdLabel1.Location = new System.Drawing.Point(15, 63);
-            taskIdLabel1.Name = "taskIdLabel1";
-            taskIdLabel1.Size = new System.Drawing.Size(46, 13);
-            taskIdLabel1.TabIndex = 9;
-            taskIdLabel1.Text = "Task Id:";
-            // 
             // taskIdComboBox
             // 
             this.taskIdComboBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.employeeTasksBindingSource, "TaskId", true));
@@ -229,15 +227,6 @@
             this.taskIdComboBox.Name = "taskIdComboBox";
             this.taskIdComboBox.Size = new System.Drawing.Size(121, 21);
             this.taskIdComboBox.TabIndex = 10;
-            // 
-            // employeeIdLabel1
-            // 
-            employeeIdLabel1.AutoSize = true;
-            employeeIdLabel1.Location = new System.Drawing.Point(15, 90);
-            employeeIdLabel1.Name = "employeeIdLabel1";
-            employeeIdLabel1.Size = new System.Drawing.Size(68, 13);
-            employeeIdLabel1.TabIndex = 11;
-            employeeIdLabel1.Text = "Employee Id:";
             // 
             // employeeIdComboBox
             // 
@@ -262,7 +251,6 @@
             this.Controls.Add(this.employeeTasksBindingNavigator);
             this.Name = "EditEmployeeTaskForm";
             this.Text = "EditEmployeeTaskForm";
-            ((System.ComponentModel.ISupportInitialize)(this.projectTrackingDataSet)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.employeeTasksBindingSource)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.employeeTasksBindingNavigator)).EndInit();
             this.employeeTasksBindingNavigator.ResumeLayout(false);
@@ -273,8 +261,6 @@
         }
 
         #endregion
-
-        private ProjectTrackingDataSet projectTrackingDataSet;
         private System.Windows.Forms.BindingSource employeeTasksBindingSource;
         private System.Windows.Forms.BindingNavigator employeeTasksBindingNavigator;
         private System.Windows.Forms.ToolStripButton bindingNavigatorAddNewItem;
