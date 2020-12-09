@@ -15,9 +15,17 @@ namespace Project.Tracking
         public EditEmployeeTaskForm(ProjectTrackingDataSet projectTrackingDataSet)
         {
             InitializeComponent();
+            this.projectTrackingDataSet = null;
+            this.projectTrackingDataSet = projectTrackingDataSet;
+
             this.employeeTasksBindingSource.DataSource = null;
-            this.employeeTasksBindingSource.DataSource = projectTrackingDataSet.EmployeeTasks;
-            this.taskBindingSource.DataSource = projectTrackingDataSet.Task;
+            this.employeeTasksBindingSource.DataSource = this.projectTrackingDataSet.EmployeeTasks;
+
+            this.taskBindingSource.DataSource = null;
+            this.taskBindingSource.DataSource = this.projectTrackingDataSet.Task;
+
+            this.employeeBindingSource.DataSource = null;
+            this.employeeBindingSource.DataSource = this.projectTrackingDataSet.Employee;
         }
 
         //Getting main form to access public methods and properities.
@@ -47,7 +55,8 @@ namespace Project.Tracking
 
         private void EditEmployeeTaskForm_Load(object sender, EventArgs e)
         {
-            
+
+
         }
     }
 }

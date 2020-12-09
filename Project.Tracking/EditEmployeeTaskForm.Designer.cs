@@ -54,7 +54,9 @@
             this.employeeIdComboBox = new System.Windows.Forms.ComboBox();
             this.hoursWorkedTextBox = new System.Windows.Forms.TextBox();
             this.dateWorkedDateTimePicker = new System.Windows.Forms.DateTimePicker();
+            this.projectTrackingDataSet = new Project.Tracking.ProjectTrackingDataSet();
             this.taskBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.employeeBindingSource = new System.Windows.Forms.BindingSource(this.components);
             idLabel = new System.Windows.Forms.Label();
             taskIdLabel = new System.Windows.Forms.Label();
             employeeIdLabel = new System.Windows.Forms.Label();
@@ -63,7 +65,9 @@
             ((System.ComponentModel.ISupportInitialize)(this.employeeTasksBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.employeeTasksBindingNavigator)).BeginInit();
             this.employeeTasksBindingNavigator.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.projectTrackingDataSet)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.taskBindingSource)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.employeeBindingSource)).BeginInit();
             this.SuspendLayout();
             // 
             // idLabel
@@ -80,9 +84,9 @@
             taskIdLabel.AutoSize = true;
             taskIdLabel.Location = new System.Drawing.Point(9, 57);
             taskIdLabel.Name = "taskIdLabel";
-            taskIdLabel.Size = new System.Drawing.Size(46, 13);
+            taskIdLabel.Size = new System.Drawing.Size(34, 13);
             taskIdLabel.TabIndex = 3;
-            taskIdLabel.Text = "Task Id:";
+            taskIdLabel.Text = "Task:";
             // 
             // employeeIdLabel
             // 
@@ -193,6 +197,7 @@
             // 
             this.bindingNavigatorPositionItem.AccessibleName = "Position";
             this.bindingNavigatorPositionItem.AutoSize = false;
+            this.bindingNavigatorPositionItem.Font = new System.Drawing.Font("Segoe UI", 9F);
             this.bindingNavigatorPositionItem.Name = "bindingNavigatorPositionItem";
             this.bindingNavigatorPositionItem.Size = new System.Drawing.Size(50, 23);
             this.bindingNavigatorPositionItem.Text = "0";
@@ -244,7 +249,8 @@
             // 
             // taskIdComboBox
             // 
-            this.taskIdComboBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.employeeTasksBindingSource, "TaskId", true));
+            this.taskIdComboBox.DataBindings.Add(new System.Windows.Forms.Binding("SelectedValue", this.taskBindingSource, "Name", true));
+            this.taskIdComboBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.taskBindingSource, "Name", true));
             this.taskIdComboBox.DataSource = this.taskBindingSource;
             this.taskIdComboBox.DisplayMember = "Name";
             this.taskIdComboBox.FormattingEnabled = true;
@@ -256,12 +262,16 @@
             // 
             // employeeIdComboBox
             // 
-            this.employeeIdComboBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.employeeTasksBindingSource, "EmployeeId", true));
+            this.employeeIdComboBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.employeeBindingSource, "FirstName", true));
+            this.employeeIdComboBox.DataBindings.Add(new System.Windows.Forms.Binding("SelectedValue", this.employeeBindingSource, "Id", true));
+            this.employeeIdComboBox.DataSource = this.employeeBindingSource;
+            this.employeeIdComboBox.DisplayMember = "FirstName";
             this.employeeIdComboBox.FormattingEnabled = true;
             this.employeeIdComboBox.Location = new System.Drawing.Point(94, 81);
             this.employeeIdComboBox.Name = "employeeIdComboBox";
             this.employeeIdComboBox.Size = new System.Drawing.Size(200, 21);
             this.employeeIdComboBox.TabIndex = 6;
+            this.employeeIdComboBox.ValueMember = "Id";
             // 
             // hoursWorkedTextBox
             // 
@@ -278,6 +288,21 @@
             this.dateWorkedDateTimePicker.Name = "dateWorkedDateTimePicker";
             this.dateWorkedDateTimePicker.Size = new System.Drawing.Size(200, 20);
             this.dateWorkedDateTimePicker.TabIndex = 10;
+            // 
+            // projectTrackingDataSet
+            // 
+            this.projectTrackingDataSet.DataSetName = "ProjectTrackingDataSet";
+            this.projectTrackingDataSet.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
+            // 
+            // taskBindingSource
+            // 
+            this.taskBindingSource.DataMember = "Task";
+            this.taskBindingSource.DataSource = this.projectTrackingDataSet;
+            // 
+            // employeeBindingSource
+            // 
+            this.employeeBindingSource.DataMember = "Employee";
+            this.employeeBindingSource.DataSource = this.projectTrackingDataSet;
             // 
             // EditEmployeeTaskForm
             // 
@@ -302,7 +327,9 @@
             ((System.ComponentModel.ISupportInitialize)(this.employeeTasksBindingNavigator)).EndInit();
             this.employeeTasksBindingNavigator.ResumeLayout(false);
             this.employeeTasksBindingNavigator.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.projectTrackingDataSet)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.taskBindingSource)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.employeeBindingSource)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -328,6 +355,8 @@
         private System.Windows.Forms.ComboBox employeeIdComboBox;
         private System.Windows.Forms.TextBox hoursWorkedTextBox;
         private System.Windows.Forms.DateTimePicker dateWorkedDateTimePicker;
+        private ProjectTrackingDataSet projectTrackingDataSet;
         private System.Windows.Forms.BindingSource taskBindingSource;
+        private System.Windows.Forms.BindingSource employeeBindingSource;
     }
 }
