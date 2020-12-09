@@ -293,7 +293,7 @@
             this.Controls.Add(this.isManagerCheckBox);
             this.Controls.Add(this.employeeBindingNavigator);
             this.Name = "EditEmployeeForm";
-            this.Text = "EditEmployeeForm";
+            this.Text = "Edit Employee";
             ((System.ComponentModel.ISupportInitialize)(this.employeeBindingSource)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.employeeBindingNavigator)).EndInit();
             this.employeeBindingNavigator.ResumeLayout(false);

@@ -360,7 +360,7 @@
             this.Controls.Add(this.statusIdComboBox);
             this.Controls.Add(this.taskBindingNavigator);
             this.Name = "EditTaskForm";
-            this.Text = "EditTaskForm";
+            this.Text = "Edit Task";
             ((System.ComponentModel.ISupportInitialize)(this.taskBindingSource)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.taskBindingNavigator)).EndInit();
             this.taskBindingNavigator.ResumeLayout(false);

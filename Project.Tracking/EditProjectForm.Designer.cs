@@ -338,7 +338,7 @@
             this.Controls.Add(this.managerIdComboBox);
             this.Controls.Add(this.projectBindingNavigator);
             this.Name = "EditProjectForm";
-            this.Text = "EditProjectForm";
+            this.Text = "Edit Project";
             ((System.ComponentModel.ISupportInitialize)(this.projectBindingSource)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.projectBindingNavigator)).EndInit();
             this.projectBindingNavigator.ResumeLayout(false);

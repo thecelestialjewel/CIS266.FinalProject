@@ -250,7 +250,7 @@
             this.Controls.Add(this.idTextBox);
             this.Controls.Add(this.employeeTasksBindingNavigator);
             this.Name = "EditEmployeeTaskForm";
-            this.Text = "EditEmployeeTaskForm";
+            this.Text = "Edit Employee Task";
             ((System.ComponentModel.ISupportInitialize)(this.employeeTasksBindingSource)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.employeeTasksBindingNavigator)).EndInit();
             this.employeeTasksBindingNavigator.ResumeLayout(false);
