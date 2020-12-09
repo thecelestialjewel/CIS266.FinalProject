@@ -58,6 +58,9 @@
             this.endDateDateTimePicker = new System.Windows.Forms.DateTimePicker();
             this.statusIdComboBox = new System.Windows.Forms.ComboBox();
             this.managerIdComboBox = new System.Windows.Forms.ComboBox();
+            this.projectTrackingDataSet = new Project.Tracking.ProjectTrackingDataSet();
+            this.statusBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.employeeBindingSource = new System.Windows.Forms.BindingSource(this.components);
             idLabel = new System.Windows.Forms.Label();
             nameLabel = new System.Windows.Forms.Label();
             descriptionLabel = new System.Windows.Forms.Label();
@@ -68,6 +71,9 @@
             ((System.ComponentModel.ISupportInitialize)(this.projectBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.projectBindingNavigator)).BeginInit();
             this.projectBindingNavigator.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.projectTrackingDataSet)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.statusBindingSource)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.employeeBindingSource)).BeginInit();
             this.SuspendLayout();
             // 
             // idLabel
@@ -215,7 +221,6 @@
             // 
             this.bindingNavigatorPositionItem.AccessibleName = "Position";
             this.bindingNavigatorPositionItem.AutoSize = false;
-            this.bindingNavigatorPositionItem.Font = new System.Drawing.Font("Segoe UI", 9F);
             this.bindingNavigatorPositionItem.Name = "bindingNavigatorPositionItem";
             this.bindingNavigatorPositionItem.Size = new System.Drawing.Size(50, 23);
             this.bindingNavigatorPositionItem.Text = "0";
@@ -301,21 +306,42 @@
             // 
             // statusIdComboBox
             // 
-            this.statusIdComboBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.projectBindingSource, "StatusId", true));
+            this.statusIdComboBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.statusBindingSource, "Status", true));
+            this.statusIdComboBox.DataSource = this.statusBindingSource;
+            this.statusIdComboBox.DisplayMember = "Status";
             this.statusIdComboBox.FormattingEnabled = true;
             this.statusIdComboBox.Location = new System.Drawing.Point(90, 168);
             this.statusIdComboBox.Name = "statusIdComboBox";
             this.statusIdComboBox.Size = new System.Drawing.Size(94, 21);
             this.statusIdComboBox.TabIndex = 12;
+            this.statusIdComboBox.ValueMember = "Id";
             // 
             // managerIdComboBox
             // 
-            this.managerIdComboBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.projectBindingSource, "ManagerId", true));
+            this.managerIdComboBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.employeeBindingSource, "FirstName", true));
+            this.managerIdComboBox.DataSource = this.employeeBindingSource;
+            this.managerIdComboBox.DisplayMember = "FirstName";
             this.managerIdComboBox.FormattingEnabled = true;
             this.managerIdComboBox.Location = new System.Drawing.Point(90, 195);
             this.managerIdComboBox.Name = "managerIdComboBox";
             this.managerIdComboBox.Size = new System.Drawing.Size(94, 21);
             this.managerIdComboBox.TabIndex = 14;
+            this.managerIdComboBox.ValueMember = "Id";
+            // 
+            // projectTrackingDataSet
+            // 
+            this.projectTrackingDataSet.DataSetName = "ProjectTrackingDataSet";
+            this.projectTrackingDataSet.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
+            // 
+            // statusBindingSource
+            // 
+            this.statusBindingSource.DataMember = "Status";
+            this.statusBindingSource.DataSource = this.projectTrackingDataSet;
+            // 
+            // employeeBindingSource
+            // 
+            this.employeeBindingSource.DataMember = "Employee";
+            this.employeeBindingSource.DataSource = this.projectTrackingDataSet;
             // 
             // EditProjectForm
             // 
@@ -339,10 +365,14 @@
             this.Controls.Add(this.projectBindingNavigator);
             this.Name = "EditProjectForm";
             this.Text = "Edit Project";
+            this.Load += new System.EventHandler(this.EditProjectForm_Load);
             ((System.ComponentModel.ISupportInitialize)(this.projectBindingSource)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.projectBindingNavigator)).EndInit();
             this.projectBindingNavigator.ResumeLayout(false);
             this.projectBindingNavigator.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.projectTrackingDataSet)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.statusBindingSource)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.employeeBindingSource)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -370,5 +400,8 @@
         private System.Windows.Forms.DateTimePicker endDateDateTimePicker;
         private System.Windows.Forms.ComboBox statusIdComboBox;
         private System.Windows.Forms.ComboBox managerIdComboBox;
+        private ProjectTrackingDataSet projectTrackingDataSet;
+        private System.Windows.Forms.BindingSource statusBindingSource;
+        private System.Windows.Forms.BindingSource employeeBindingSource;
     }
 }

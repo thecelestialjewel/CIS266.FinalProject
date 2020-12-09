@@ -16,8 +16,19 @@ namespace Project.Tracking
         public EditProjectForm(ProjectTrackingDataSet projectTrackingDataSet)
         {
             InitializeComponent();
+            this.projectTrackingDataSet = null;
+            this.projectTrackingDataSet = projectTrackingDataSet;
+            
             this.projectBindingSource.DataSource = null;
-            this.projectBindingSource.DataSource = projectTrackingDataSet.Project;
+            this.projectBindingSource.DataSource = this.projectTrackingDataSet.Project;
+
+            this.statusBindingSource.DataSource = null;
+            this.statusBindingSource.DataSource = this.projectTrackingDataSet.Status;
+
+            this.employeeBindingSource.DataSource = null;
+            this.employeeBindingSource.DataSource = this.projectTrackingDataSet.Employee;
+
+            
         }
 
         //Getting main form to access public methods and properities.
@@ -43,6 +54,12 @@ namespace Project.Tracking
                 MessageBox.Show(ex.Message);
                 MainForm.SetReadyLabel("Error saving project!");
             }
+        }
+
+        private void EditProjectForm_Load(object sender, EventArgs e)
+        {
+           
+
         }
     }
 }
