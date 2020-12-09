@@ -1,4 +1,5 @@
-﻿//Christine Jordan Term Project: Form 2 
+﻿/*Christine Jordan CIS266: Term Project
+ Form 2: A project and list of employees working on that project, including the task, date, and hours worked*/
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;

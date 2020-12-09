@@ -1,4 +1,5 @@
-﻿//Christine Jordan 12.7.2020 CIS266:Term Project
+﻿/*Christine Jordan 12.7.2020 CIS266:Term Project
+ * Form 3: An employee and the projects, tasks, dates, and hours worked*/
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;

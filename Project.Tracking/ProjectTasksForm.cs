@@ -1,4 +1,6 @@
-﻿using System;
+﻿/*Christine Jordan 12.7.2020 CIS266: Term Project: 
+ * Form 1: A project and all associated tasks*/
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
