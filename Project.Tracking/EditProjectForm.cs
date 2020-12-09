@@ -1,4 +1,5 @@
-﻿using System;
+﻿//Christine Jordan 12.7.2020 CIS266: Term Project
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -15,16 +16,33 @@ namespace Project.Tracking
         public EditProjectForm(ProjectTrackingDataSet projectTrackingDataSet)
         {
             InitializeComponent();
-            this.projectTrackingDataSet = null;
-            this.projectTrackingDataSet = projectTrackingDataSet;
             this.projectBindingSource.DataSource = null;
-            this.projectBindingSource.DataSource = this.projectTrackingDataSet.Project;
+            this.projectBindingSource.DataSource = projectTrackingDataSet.Project;
         }
 
         //Getting main form to access public methods and properities.
         private ProjectTrackingMainForm MainForm
         {
             get { return (ProjectTrackingMainForm)MdiParent; }
+        }
+
+        //Creating save event handler
+        private void projectBindingNavigatorSaveItem_Click(object sender, EventArgs e)
+        {
+            //Making sure data is valid and edit is turning off.
+            try
+            {
+                Validate();
+                projectBindingSource.EndEdit();
+                //Save the data
+                MainForm.SaveData();
+            }
+            catch (Exception ex)
+            {
+                //If not valid, display message.
+                MessageBox.Show(ex.Message);
+                MainForm.SetReadyLabel("Error saving project!");
+            }
         }
     }
 }

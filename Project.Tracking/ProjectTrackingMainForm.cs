@@ -51,7 +51,7 @@ namespace Project.Tracking
             }
         }
 
-        private void SaveData()
+        public void SaveData()
         {
             //instantiating adapters
             ProjectTrackingTableAdapters.EmployeeTableAdapter employeeTableAdapter = new ProjectTrackingTableAdapters.EmployeeTableAdapter();

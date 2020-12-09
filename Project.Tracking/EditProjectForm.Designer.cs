@@ -29,7 +29,6 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(EditProjectForm));
             System.Windows.Forms.Label idLabel;
             System.Windows.Forms.Label nameLabel;
             System.Windows.Forms.Label descriptionLabel;
@@ -37,20 +36,20 @@
             System.Windows.Forms.Label endDateLabel;
             System.Windows.Forms.Label statusIdLabel;
             System.Windows.Forms.Label managerIdLabel;
-            this.projectTrackingDataSet = new Project.Tracking.ProjectTrackingDataSet();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(EditProjectForm));
             this.projectBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.projectBindingNavigator = new System.Windows.Forms.BindingNavigator(this.components);
+            this.bindingNavigatorAddNewItem = new System.Windows.Forms.ToolStripButton();
+            this.bindingNavigatorCountItem = new System.Windows.Forms.ToolStripLabel();
+            this.bindingNavigatorDeleteItem = new System.Windows.Forms.ToolStripButton();
             this.bindingNavigatorMoveFirstItem = new System.Windows.Forms.ToolStripButton();
             this.bindingNavigatorMovePreviousItem = new System.Windows.Forms.ToolStripButton();
             this.bindingNavigatorSeparator = new System.Windows.Forms.ToolStripSeparator();
             this.bindingNavigatorPositionItem = new System.Windows.Forms.ToolStripTextBox();
-            this.bindingNavigatorCountItem = new System.Windows.Forms.ToolStripLabel();
             this.bindingNavigatorSeparator1 = new System.Windows.Forms.ToolStripSeparator();
             this.bindingNavigatorMoveNextItem = new System.Windows.Forms.ToolStripButton();
             this.bindingNavigatorMoveLastItem = new System.Windows.Forms.ToolStripButton();
             this.bindingNavigatorSeparator2 = new System.Windows.Forms.ToolStripSeparator();
-            this.bindingNavigatorAddNewItem = new System.Windows.Forms.ToolStripButton();
-            this.bindingNavigatorDeleteItem = new System.Windows.Forms.ToolStripButton();
             this.projectBindingNavigatorSaveItem = new System.Windows.Forms.ToolStripButton();
             this.idTextBox = new System.Windows.Forms.TextBox();
             this.nameTextBox = new System.Windows.Forms.TextBox();
@@ -66,21 +65,73 @@
             endDateLabel = new System.Windows.Forms.Label();
             statusIdLabel = new System.Windows.Forms.Label();
             managerIdLabel = new System.Windows.Forms.Label();
-            ((System.ComponentModel.ISupportInitialize)(this.projectTrackingDataSet)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.projectBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.projectBindingNavigator)).BeginInit();
             this.projectBindingNavigator.SuspendLayout();
             this.SuspendLayout();
             // 
-            // projectTrackingDataSet
+            // idLabel
             // 
-            this.projectTrackingDataSet.DataSetName = "ProjectTrackingDataSet";
-            this.projectTrackingDataSet.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
+            idLabel.AutoSize = true;
+            idLabel.Location = new System.Drawing.Point(20, 41);
+            idLabel.Name = "idLabel";
+            idLabel.Size = new System.Drawing.Size(19, 13);
+            idLabel.TabIndex = 1;
+            idLabel.Text = "Id:";
             // 
-            // projectBindingSource
+            // nameLabel
             // 
-            this.projectBindingSource.DataMember = "Project";
-            this.projectBindingSource.DataSource = this.projectTrackingDataSet;
+            nameLabel.AutoSize = true;
+            nameLabel.Location = new System.Drawing.Point(20, 67);
+            nameLabel.Name = "nameLabel";
+            nameLabel.Size = new System.Drawing.Size(38, 13);
+            nameLabel.TabIndex = 3;
+            nameLabel.Text = "Name:";
+            // 
+            // descriptionLabel
+            // 
+            descriptionLabel.AutoSize = true;
+            descriptionLabel.Location = new System.Drawing.Point(20, 93);
+            descriptionLabel.Name = "descriptionLabel";
+            descriptionLabel.Size = new System.Drawing.Size(63, 13);
+            descriptionLabel.TabIndex = 5;
+            descriptionLabel.Text = "Description:";
+            // 
+            // startDateLabel
+            // 
+            startDateLabel.AutoSize = true;
+            startDateLabel.Location = new System.Drawing.Point(20, 120);
+            startDateLabel.Name = "startDateLabel";
+            startDateLabel.Size = new System.Drawing.Size(58, 13);
+            startDateLabel.TabIndex = 7;
+            startDateLabel.Text = "Start Date:";
+            // 
+            // endDateLabel
+            // 
+            endDateLabel.AutoSize = true;
+            endDateLabel.Location = new System.Drawing.Point(20, 146);
+            endDateLabel.Name = "endDateLabel";
+            endDateLabel.Size = new System.Drawing.Size(55, 13);
+            endDateLabel.TabIndex = 9;
+            endDateLabel.Text = "End Date:";
+            // 
+            // statusIdLabel
+            // 
+            statusIdLabel.AutoSize = true;
+            statusIdLabel.Location = new System.Drawing.Point(20, 171);
+            statusIdLabel.Name = "statusIdLabel";
+            statusIdLabel.Size = new System.Drawing.Size(52, 13);
+            statusIdLabel.TabIndex = 11;
+            statusIdLabel.Text = "Status Id:";
+            // 
+            // managerIdLabel
+            // 
+            managerIdLabel.AutoSize = true;
+            managerIdLabel.Location = new System.Drawing.Point(20, 198);
+            managerIdLabel.Name = "managerIdLabel";
+            managerIdLabel.Size = new System.Drawing.Size(64, 13);
+            managerIdLabel.TabIndex = 13;
+            managerIdLabel.Text = "Manager Id:";
             // 
             // projectBindingNavigator
             // 
@@ -112,6 +163,31 @@
             this.projectBindingNavigator.TabIndex = 0;
             this.projectBindingNavigator.Text = "bindingNavigator1";
             // 
+            // bindingNavigatorAddNewItem
+            // 
+            this.bindingNavigatorAddNewItem.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.bindingNavigatorAddNewItem.Image = ((System.Drawing.Image)(resources.GetObject("bindingNavigatorAddNewItem.Image")));
+            this.bindingNavigatorAddNewItem.Name = "bindingNavigatorAddNewItem";
+            this.bindingNavigatorAddNewItem.RightToLeftAutoMirrorImage = true;
+            this.bindingNavigatorAddNewItem.Size = new System.Drawing.Size(23, 22);
+            this.bindingNavigatorAddNewItem.Text = "Add new";
+            // 
+            // bindingNavigatorCountItem
+            // 
+            this.bindingNavigatorCountItem.Name = "bindingNavigatorCountItem";
+            this.bindingNavigatorCountItem.Size = new System.Drawing.Size(35, 22);
+            this.bindingNavigatorCountItem.Text = "of {0}";
+            this.bindingNavigatorCountItem.ToolTipText = "Total number of items";
+            // 
+            // bindingNavigatorDeleteItem
+            // 
+            this.bindingNavigatorDeleteItem.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.bindingNavigatorDeleteItem.Image = ((System.Drawing.Image)(resources.GetObject("bindingNavigatorDeleteItem.Image")));
+            this.bindingNavigatorDeleteItem.Name = "bindingNavigatorDeleteItem";
+            this.bindingNavigatorDeleteItem.RightToLeftAutoMirrorImage = true;
+            this.bindingNavigatorDeleteItem.Size = new System.Drawing.Size(23, 22);
+            this.bindingNavigatorDeleteItem.Text = "Delete";
+            // 
             // bindingNavigatorMoveFirstItem
             // 
             this.bindingNavigatorMoveFirstItem.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
@@ -139,21 +215,15 @@
             // 
             this.bindingNavigatorPositionItem.AccessibleName = "Position";
             this.bindingNavigatorPositionItem.AutoSize = false;
+            this.bindingNavigatorPositionItem.Font = new System.Drawing.Font("Segoe UI", 9F);
             this.bindingNavigatorPositionItem.Name = "bindingNavigatorPositionItem";
             this.bindingNavigatorPositionItem.Size = new System.Drawing.Size(50, 23);
             this.bindingNavigatorPositionItem.Text = "0";
             this.bindingNavigatorPositionItem.ToolTipText = "Current position";
             // 
-            // bindingNavigatorCountItem
-            // 
-            this.bindingNavigatorCountItem.Name = "bindingNavigatorCountItem";
-            this.bindingNavigatorCountItem.Size = new System.Drawing.Size(35, 22);
-            this.bindingNavigatorCountItem.Text = "of {0}";
-            this.bindingNavigatorCountItem.ToolTipText = "Total number of items";
-            // 
             // bindingNavigatorSeparator1
             // 
-            this.bindingNavigatorSeparator1.Name = "bindingNavigatorSeparator";
+            this.bindingNavigatorSeparator1.Name = "bindingNavigatorSeparator1";
             this.bindingNavigatorSeparator1.Size = new System.Drawing.Size(6, 25);
             // 
             // bindingNavigatorMoveNextItem
@@ -176,44 +246,17 @@
             // 
             // bindingNavigatorSeparator2
             // 
-            this.bindingNavigatorSeparator2.Name = "bindingNavigatorSeparator";
+            this.bindingNavigatorSeparator2.Name = "bindingNavigatorSeparator2";
             this.bindingNavigatorSeparator2.Size = new System.Drawing.Size(6, 25);
-            // 
-            // bindingNavigatorAddNewItem
-            // 
-            this.bindingNavigatorAddNewItem.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this.bindingNavigatorAddNewItem.Image = ((System.Drawing.Image)(resources.GetObject("bindingNavigatorAddNewItem.Image")));
-            this.bindingNavigatorAddNewItem.Name = "bindingNavigatorAddNewItem";
-            this.bindingNavigatorAddNewItem.RightToLeftAutoMirrorImage = true;
-            this.bindingNavigatorAddNewItem.Size = new System.Drawing.Size(23, 22);
-            this.bindingNavigatorAddNewItem.Text = "Add new";
-            // 
-            // bindingNavigatorDeleteItem
-            // 
-            this.bindingNavigatorDeleteItem.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this.bindingNavigatorDeleteItem.Image = ((System.Drawing.Image)(resources.GetObject("bindingNavigatorDeleteItem.Image")));
-            this.bindingNavigatorDeleteItem.Name = "bindingNavigatorDeleteItem";
-            this.bindingNavigatorDeleteItem.RightToLeftAutoMirrorImage = true;
-            this.bindingNavigatorDeleteItem.Size = new System.Drawing.Size(23, 22);
-            this.bindingNavigatorDeleteItem.Text = "Delete";
             // 
             // projectBindingNavigatorSaveItem
             // 
             this.projectBindingNavigatorSaveItem.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this.projectBindingNavigatorSaveItem.Enabled = false;
             this.projectBindingNavigatorSaveItem.Image = ((System.Drawing.Image)(resources.GetObject("projectBindingNavigatorSaveItem.Image")));
             this.projectBindingNavigatorSaveItem.Name = "projectBindingNavigatorSaveItem";
             this.projectBindingNavigatorSaveItem.Size = new System.Drawing.Size(23, 22);
             this.projectBindingNavigatorSaveItem.Text = "Save Data";
-            // 
-            // idLabel
-            // 
-            idLabel.AutoSize = true;
-            idLabel.Location = new System.Drawing.Point(20, 41);
-            idLabel.Name = "idLabel";
-            idLabel.Size = new System.Drawing.Size(19, 13);
-            idLabel.TabIndex = 1;
-            idLabel.Text = "Id:";
+            this.projectBindingNavigatorSaveItem.Click += new System.EventHandler(this.projectBindingNavigatorSaveItem_Click);
             // 
             // idTextBox
             // 
@@ -224,15 +267,6 @@
             this.idTextBox.Size = new System.Drawing.Size(48, 20);
             this.idTextBox.TabIndex = 2;
             // 
-            // nameLabel
-            // 
-            nameLabel.AutoSize = true;
-            nameLabel.Location = new System.Drawing.Point(20, 67);
-            nameLabel.Name = "nameLabel";
-            nameLabel.Size = new System.Drawing.Size(38, 13);
-            nameLabel.TabIndex = 3;
-            nameLabel.Text = "Name:";
-            // 
             // nameTextBox
             // 
             this.nameTextBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.projectBindingSource, "Name", true));
@@ -240,15 +274,6 @@
             this.nameTextBox.Name = "nameTextBox";
             this.nameTextBox.Size = new System.Drawing.Size(200, 20);
             this.nameTextBox.TabIndex = 4;
-            // 
-            // descriptionLabel
-            // 
-            descriptionLabel.AutoSize = true;
-            descriptionLabel.Location = new System.Drawing.Point(20, 93);
-            descriptionLabel.Name = "descriptionLabel";
-            descriptionLabel.Size = new System.Drawing.Size(63, 13);
-            descriptionLabel.TabIndex = 5;
-            descriptionLabel.Text = "Description:";
             // 
             // descriptionTextBox
             // 
@@ -258,15 +283,6 @@
             this.descriptionTextBox.Size = new System.Drawing.Size(200, 20);
             this.descriptionTextBox.TabIndex = 6;
             // 
-            // startDateLabel
-            // 
-            startDateLabel.AutoSize = true;
-            startDateLabel.Location = new System.Drawing.Point(20, 120);
-            startDateLabel.Name = "startDateLabel";
-            startDateLabel.Size = new System.Drawing.Size(58, 13);
-            startDateLabel.TabIndex = 7;
-            startDateLabel.Text = "Start Date:";
-            // 
             // startDateDateTimePicker
             // 
             this.startDateDateTimePicker.DataBindings.Add(new System.Windows.Forms.Binding("Value", this.projectBindingSource, "StartDate", true));
@@ -274,15 +290,6 @@
             this.startDateDateTimePicker.Name = "startDateDateTimePicker";
             this.startDateDateTimePicker.Size = new System.Drawing.Size(200, 20);
             this.startDateDateTimePicker.TabIndex = 8;
-            // 
-            // endDateLabel
-            // 
-            endDateLabel.AutoSize = true;
-            endDateLabel.Location = new System.Drawing.Point(20, 146);
-            endDateLabel.Name = "endDateLabel";
-            endDateLabel.Size = new System.Drawing.Size(55, 13);
-            endDateLabel.TabIndex = 9;
-            endDateLabel.Text = "End Date:";
             // 
             // endDateDateTimePicker
             // 
@@ -292,15 +299,6 @@
             this.endDateDateTimePicker.Size = new System.Drawing.Size(200, 20);
             this.endDateDateTimePicker.TabIndex = 10;
             // 
-            // statusIdLabel
-            // 
-            statusIdLabel.AutoSize = true;
-            statusIdLabel.Location = new System.Drawing.Point(20, 171);
-            statusIdLabel.Name = "statusIdLabel";
-            statusIdLabel.Size = new System.Drawing.Size(52, 13);
-            statusIdLabel.TabIndex = 11;
-            statusIdLabel.Text = "Status Id:";
-            // 
             // statusIdComboBox
             // 
             this.statusIdComboBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.projectBindingSource, "StatusId", true));
@@ -309,15 +307,6 @@
             this.statusIdComboBox.Name = "statusIdComboBox";
             this.statusIdComboBox.Size = new System.Drawing.Size(94, 21);
             this.statusIdComboBox.TabIndex = 12;
-            // 
-            // managerIdLabel
-            // 
-            managerIdLabel.AutoSize = true;
-            managerIdLabel.Location = new System.Drawing.Point(20, 198);
-            managerIdLabel.Name = "managerIdLabel";
-            managerIdLabel.Size = new System.Drawing.Size(64, 13);
-            managerIdLabel.TabIndex = 13;
-            managerIdLabel.Text = "Manager Id:";
             // 
             // managerIdComboBox
             // 
@@ -350,7 +339,6 @@
             this.Controls.Add(this.projectBindingNavigator);
             this.Name = "EditProjectForm";
             this.Text = "EditProjectForm";
-            ((System.ComponentModel.ISupportInitialize)(this.projectTrackingDataSet)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.projectBindingSource)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.projectBindingNavigator)).EndInit();
             this.projectBindingNavigator.ResumeLayout(false);
@@ -361,8 +349,6 @@
         }
 
         #endregion
-
-        private ProjectTrackingDataSet projectTrackingDataSet;
         private System.Windows.Forms.BindingSource projectBindingSource;
         private System.Windows.Forms.BindingNavigator projectBindingNavigator;
         private System.Windows.Forms.ToolStripButton bindingNavigatorAddNewItem;
