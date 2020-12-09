@@ -119,40 +119,44 @@ namespace Project.Tracking
                 //get employee associated with each task
                 foreach (TaskRow task in tasks) //foreach tasks in our tasks list
                 {
-                    //accumulating the hours
-                    totalHours += task.HoursWorked;
-                    
+                                       
                     //using relationships to get employee information
                     EmployeeTasksRow[] eTasks = (EmployeeTasksRow[])task.GetChildRows("fk_EmployeeTaskToTask");
-                    if (eTasks.Length > 0)
+
+                    foreach (EmployeeTasksRow eTask in eTasks)
                     {
-
-                        EmployeeRow employee = (EmployeeRow)eTasks[0].GetParentRow("fk_EmployeeTaskToEmployee");
-
-
-                        string date;
-                        try
+                        if (eTasks.Length > 0)
                         {
-                            //start date is not nullable, but my database column is
-                            //if db null happens, exception is thrown
-                            date = task.StartDate.ToShortDateString();
+                            //accumulating the hours
+                            totalHours += eTask.HoursWorked;
+
+                            EmployeeRow employee = (EmployeeRow)eTask.GetParentRow("fk_EmployeeTaskToEmployee");
+
+
+                            string date;
+                            try
+                            {
+                                //start date is not nullable, but my database column is
+                                //if db null happens, exception is thrown
+                                date = eTask.DateWorked.ToShortDateString();
+                            }
+                            catch
+                            {
+                                //use not available, if start date is db null
+                                date = "N/A";
+                            }
+
+                            //adding data to dataview columns, populates data
+                            ListViewItem item = new ListViewItem($"{employee.FirstName} {employee.LastName}");
+                            item.SubItems.Add(task.Name);
+                            item.SubItems.Add(date);
+                            item.SubItems.Add(eTask.HoursWorked.ToString());
+
+
+
+                            //add item to list view
+                            taskDetailsListView.Items.Add(item);
                         }
-                        catch
-                        {
-                            //use not available, if start date is db null
-                            date = "N/A";
-                        }
-
-                        //adding data to dataview columns, populates data
-                        ListViewItem item = new ListViewItem(employee.FullName);
-                        item.SubItems.Add(task.Name);
-                        item.SubItems.Add(date);
-                        item.SubItems.Add(task.HoursWorked.ToString());
-
-
-
-                        //add item to list view
-                        taskDetailsListView.Items.Add(item);
                     }
                     
                 }

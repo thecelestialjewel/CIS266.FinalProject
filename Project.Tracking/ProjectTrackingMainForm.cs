@@ -27,11 +27,11 @@ namespace Project.Tracking
         private void FillData()
         {
             //instantiating adapters
-            ProjectTrackingTableAdapters.EmployeeTableAdapter employeeTableAdapter = new ProjectTrackingTableAdapters.EmployeeTableAdapter();
-            ProjectTrackingTableAdapters.EmployeeTasksTableAdapter employeeTasksTableAdapter = new ProjectTrackingTableAdapters.EmployeeTasksTableAdapter();
-            ProjectTrackingTableAdapters.ProjectTableAdapter projectTableAdapter = new ProjectTrackingTableAdapters.ProjectTableAdapter();
-            ProjectTrackingTableAdapters.StatusTableAdapter statusTableAdapter = new ProjectTrackingTableAdapters.StatusTableAdapter();
-            ProjectTrackingTableAdapters.TaskTableAdapter taskTableAdapter = new ProjectTrackingTableAdapters.TaskTableAdapter();
+            ProjectTrackingDataSetTableAdapters.EmployeeTableAdapter employeeTableAdapter = new ProjectTrackingDataSetTableAdapters.EmployeeTableAdapter();
+            ProjectTrackingDataSetTableAdapters.EmployeeTasksTableAdapter employeeTasksTableAdapter = new ProjectTrackingDataSetTableAdapters.EmployeeTasksTableAdapter();
+            ProjectTrackingDataSetTableAdapters.ProjectTableAdapter projectTableAdapter = new ProjectTrackingDataSetTableAdapters.ProjectTableAdapter();
+            ProjectTrackingDataSetTableAdapters.StatusTableAdapter statusTableAdapter = new ProjectTrackingDataSetTableAdapters.StatusTableAdapter();
+            ProjectTrackingDataSetTableAdapters.TaskTableAdapter taskTableAdapter = new ProjectTrackingDataSetTableAdapters.TaskTableAdapter();
 
             //Getting data and putting in dataset. 
             try
@@ -54,14 +54,14 @@ namespace Project.Tracking
         public void SaveData()
         {
             //instantiating adapters
-            ProjectTrackingTableAdapters.EmployeeTableAdapter employeeTableAdapter = new ProjectTrackingTableAdapters.EmployeeTableAdapter();
-            ProjectTrackingTableAdapters.EmployeeTasksTableAdapter employeeTasksTableAdapter = new ProjectTrackingTableAdapters.EmployeeTasksTableAdapter();
-            ProjectTrackingTableAdapters.ProjectTableAdapter projectTableAdapter = new ProjectTrackingTableAdapters.ProjectTableAdapter();
-            ProjectTrackingTableAdapters.StatusTableAdapter statusTableAdapter = new ProjectTrackingTableAdapters.StatusTableAdapter();
-            ProjectTrackingTableAdapters.TaskTableAdapter taskTableAdapter = new ProjectTrackingTableAdapters.TaskTableAdapter();
-            
+            ProjectTrackingDataSetTableAdapters.EmployeeTableAdapter employeeTableAdapter = new ProjectTrackingDataSetTableAdapters.EmployeeTableAdapter();
+            ProjectTrackingDataSetTableAdapters.EmployeeTasksTableAdapter employeeTasksTableAdapter = new ProjectTrackingDataSetTableAdapters.EmployeeTasksTableAdapter();
+            ProjectTrackingDataSetTableAdapters.ProjectTableAdapter projectTableAdapter = new ProjectTrackingDataSetTableAdapters.ProjectTableAdapter();
+            ProjectTrackingDataSetTableAdapters.StatusTableAdapter statusTableAdapter = new ProjectTrackingDataSetTableAdapters.StatusTableAdapter();
+            ProjectTrackingDataSetTableAdapters.TaskTableAdapter taskTableAdapter = new ProjectTrackingDataSetTableAdapters.TaskTableAdapter();
+
             //assigning table adapter to table adapter manager properities
-            ProjectTrackingTableAdapters.TableAdapterManager tableAdapterManager = new ProjectTrackingTableAdapters.TableAdapterManager();
+            ProjectTrackingDataSetTableAdapters.TableAdapterManager tableAdapterManager = new ProjectTrackingDataSetTableAdapters.TableAdapterManager();
             tableAdapterManager.EmployeeTableAdapter = employeeTableAdapter;
             tableAdapterManager.EmployeeTasksTableAdapter = employeeTasksTableAdapter;
             tableAdapterManager.ProjectTableAdapter = projectTableAdapter;

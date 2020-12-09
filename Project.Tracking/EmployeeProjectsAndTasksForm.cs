@@ -1,4 +1,5 @@
-﻿using System;
+﻿//Christine Jordan 12.7.2020 CIS266:Term Project
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -78,7 +79,7 @@ namespace Project.Tracking
                     {
                         //start date is not nullable, but my database column is
                         //if db null happens, exception is thrown
-                        date = task.StartDate.ToShortDateString();
+                        date = row.DateWorked.ToShortDateString();
                     }
                     catch
                     {
@@ -90,13 +91,13 @@ namespace Project.Tracking
                     ListViewItem item = new ListViewItem(project.Name);
                     item.SubItems.Add(task.Name);
                     item.SubItems.Add(date);
-                    item.SubItems.Add(task.HoursWorked.ToString());
+                    item.SubItems.Add(row.HoursWorked.ToString());
 
                     //add item to list view
                     projectDetailsListView.Items.Add(item);
 
                     //accumulating total hours
-                    totalHours += task.HoursWorked;
+                    totalHours += row.HoursWorked;
 
                 }
                 totalHourTextBox.Text = totalHours.ToString();
